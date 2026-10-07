@@ -45,5 +45,14 @@ const AUDIO_DURATIONS = {
   "audio/s1_03.mp3": 84.381315,
   "audio/s1_04.mp3": 108.344308,
   "audio/s1_05.mp3": 103.839637,
-  "audio/s1_07.mp3": 52.895057
+  "audio/s1_07.mp3": 52.895057,
+  "audio/pitch-v2/s1_00.mp3": 80.155283,
+  "audio/pitch-v2/s1_01.mp3": 115.588934,
+  "audio/pitch-v2/s1_02.mp3": 119.350567,
+  "audio/pitch-v2/s1_03.mp3": 104.396916,
+  "audio/pitch-v2/s1_04.mp3": 30.046621,
+  "audio/pitch-v2/s2_00.mp3": 122.78712,
+  "audio/pitch-v2/s2_01.mp3": 88.839546,
+  "audio/pitch-v2/s2_02.mp3": 109.133787,
+  "audio/pitch-v2/s2_03.mp3": 29.257143
 };

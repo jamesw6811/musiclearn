@@ -1,4 +1,4 @@
-/* Pitch, tuning, and the inside of a note. Listening windows are budgets, not verified track lengths. */
+/* Approved guided-course script. Recordings use a new directory to prevent stale audio after reindexing. */
 const PITCH_SESSIONS = [
   {
     "title": "What a note is",
@@ -8,8 +8,13 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "1A · A sound with an inside",
-        "text": "Sing a comfortable note and hold it. It feels like one thing: one pitch, one breath, one sound. Yet a steady musical tone can contain many frequencies at once. A sine wave is the simplest ingredient, a smooth oscillation at a single frequency. Fourier analysis lets us describe a periodic wave as a sum of sine waves. This is a way to understand the sound, not a claim that your throat contains a bank of tiny synthesizers.\n\nFor a harmonic tone, the frequencies are integer multiples of a fundamental: f, 2f, 3f, 4f, and onward. At a fundamental of 100 hertz, that means 100, 200, 300, 400 hertz. We usually fuse them into a single note. Their relative strengths help give a voice, a violin, and a trumpet different timbres. The attack, noise, and changes over time matter too. Bells and other inharmonic sounds need a more complicated recipe.\n\nThe fundamental is the first harmonic. The first overtone is the second harmonic. That small counting distinction will matter later. An overtone singer shapes the vocal tract so that selected upper harmonics stand out. You can follow an upper melody while still hearing the lower vocal pitch. Some techniques also move that lower pitch; do not assume every example uses an absolutely fixed drone.\n\nWhat to listen for: first follow the low voice in Huun-Huur-Tu, then shift your attention upward. Use Hefele's demonstration to hear individual harmonics emerge. The apparent second voice is already inside the first sound.",
+        "title": "Welcome to The Inside of a Note",
+        "text": "Welcome to The Inside of a Note. Over these six sessions, we'll listen closely to pitch: how a voice makes a note, how musicians tune notes against each other, and what happens when they use pitches between the keys of a piano.\n\nWe'll move from throat singing and electronic bass lines to Indian classical music, blues, barbershop, and experimental music. Each recording will help us hear a particular idea. We'll start with the components of one note, listen to what happens when two notes meet, and then explore the different ways musicians organize those relationships.\n\nYou don't need to read music or recognize intervals by name. I'll explain the terms as we need them, introduce each recording, and give you something specific to listen for. Some differences will be easy to hear. Others may take time to become familiar. You can still follow the course if you don't catch every detail on the first pass.\n\nOnce you press Play, the narration and music will continue in sequence. Longer pieces use selected excerpts, so a recording may end before the piece itself does. The next introduction will follow automatically.\n\nThere are also two optional listening labs. One lets you change the harmonics inside a tone; the other lets you adjust the tuning of two tones. You can try them after a session. Everything you need for the listening will be explained here.\n\nWe'll begin with the sound of a single voice."
+      },
+      {
+        "type": "narration",
+        "title": "1A · Hearing the harmonics",
+        "text": "In this first session, we'll learn to hear some of the components that usually blend together into one note. We'll begin with a singer, move to a synthesizer, and finish with a horn. Each example will help us connect the pitch of a note with its tone color, also called timbre.\n\nOur first recording is Anna-Maria Hefele singing overtones. You'll hear a low sung note and a much higher, whistle-like melody at the same time. She changes the shape of her vocal tract to bring out particular frequencies in her voice.\n\nThose frequencies are present in ordinary singing too. We usually hear them together as one note. Frequency is how quickly something vibrates; hertz means vibrations per second. Higher frequencies generally give us higher pitches. In a harmonic sound, the components occur at whole-number multiples of a basic frequency, called the fundamental. If the fundamental is 100 hertz, the harmonics are at 100, 200, 300, 400 hertz, and so on. The fundamental counts as the first harmonic; the first overtone is the second harmonic.\n\nEach of these components can be described as a sine wave, a smooth vibration at one frequency. Their relative strengths help explain why a voice and a trumpet can play the same pitch and sound different. The beginning of the note, the noise in it, and the way it changes also contribute. This pattern of whole-number multiples fits many musical tones, though sounds such as bells can have more complicated frequency relationships.\n\nHefele's solo will play first for four minutes, followed by four minutes of Huun-Huur-Tu's “Orphan's Lament.” In the solo, follow the low voice, then turn your attention toward the upper whistle. In the group recording, listen for the vocal sound among the instruments. If the layers are difficult to separate, stay with the lower voice and notice when something brighter becomes audible above it.",
         "sources": [
           {
             "title": "Hefele: demonstrations",
@@ -19,34 +24,42 @@ const PITCH_SESSIONS = [
       },
       {
         "type": "music",
-        "title": "Orphan's Lament",
-        "artist": "Huun-Huur-Tu",
-        "album": "The Orphan’s Lament",
-        "context": "Separate the low sung line from the bright upper resonance. Instrumental accompaniment can also make pitches, so compare with the solo demonstration. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": "https://music.apple.com/us/album/the-orphans-lament/1565051268",
-        "youtubeId": null,
-        "endSeconds": null
-      },
-      {
-        "type": "music",
         "title": "Polyphonic overtone singing",
         "artist": "Anna-Maria Hefele",
         "album": "Solo demonstration (2014)",
-        "context": "Follow the whistle-like upper line and notice when the lower voice stays put or moves. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": "https://overtone.academy/videos/",
+        "context": "Follow the whistle-like upper line and notice when the lower voice stays put or moves.",
+        "sourceUrl": "https://www.youtube.com/watch?v=vC9Qh709gas",
         "youtubeId": "vC9Qh709gas",
-        "endSeconds": 240
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 298
+      },
+      {
+        "type": "music",
+        "title": "Orphan's Lament",
+        "artist": "Huun-Huur-Tu",
+        "album": "The Orphan’s Lament",
+        "context": "Separate the low sung line from the bright upper resonance. Instrumental accompaniment can also make pitches, so compare with the solo demonstration.",
+        "sourceUrl": "https://www.youtube.com/watch?v=ygeGPlAdLHQ",
+        "youtubeId": "ygeGPlAdLHQ",
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 402
       },
       {
         "type": "narration",
-        "title": "1B · A synthesizer’s harmonic recipe",
-        "text": "Imagine controlling the strength of each harmonic independently. That is additive synthesis. You can assemble a bright or dark sound by choosing ingredients. Another approach starts with a harmonically rich waveform and removes ingredients with a filter: subtractive synthesis. Both approaches make the inside of a note available as a musical material.\n\nAn ideal sawtooth contains every integer harmonic, with amplitudes falling roughly as one over the harmonic number. An ideal symmetric square wave contains only odd harmonics: first, third, fifth, seventh. Change its pulse width and the pattern changes. Real instruments, distortion, and filters modify these ideal recipes. Knowing the starting waveform helps you hear the difference between changing a melody and changing its color.\n\nA low-pass filter reduces frequencies above its cutoff. Open it and more upper energy comes through; close it and the tone darkens. Resonance emphasizes a region near the cutoff. A resonant sweep can make harmonics conspicuous, but it does not necessarily climb them one at a time. In acid house, the bass pattern and the filter's movement work together. The pitches in “Acid Tracks” do move; the useful comparison is a repeating phrase whose brightness changes much more dramatically.\n\nCarlos offers another angle: Bach's distinct musical lines become distinct electronic colors. Listen to the attack and sustain as well as brightness. A convincing instrument is a changing recipe, not just a fixed spectrum.\n\nWhat to listen for: in Phuture, keep humming the repeating bass figure while the filter transforms it. In Carlos, follow one contrapuntal line and identify the sonic features that keep it separate from its neighbors.",
+        "title": "1B · Changing the sound of a repeating phrase",
+        "text": "In the singing examples, we listened for individual harmonics within a voice. A synthesizer gives a musician direct control over the balance of those components. Now we'll listen to what happens when that balance changes during a repeating phrase.\n\nThe first track will be Phuture's “Acid Tracks.” Its bass figure repeats enough that you can learn its shape while its sound becomes brighter, more nasal, then more subdued. A large part of that movement comes from filtering.\n\nA synthesizer can start with a waveform containing many harmonics. An ideal sawtooth has all the whole-number harmonics, with each successive one weaker than the last. A symmetric square wave has only the odd-numbered harmonics. These give a filter different starting sounds to work with.\n\nA low-pass filter reduces frequencies above a chosen cutoff. Raising that cutoff lets more of the upper harmonics through. Resonance emphasizes frequencies near the cutoff, which can make the movement especially audible. The filter can change the tone while the underlying sequence keeps repeating. The bass notes themselves also move; you can listen for those two kinds of change separately.\n\nThis is called subtractive synthesis. Additive synthesis works by combining individual components and choosing their strengths. You can try this later in the optional Build a Note lab.\n\nAfter Phuture, we will hear a synthesized performance of Bach's Sinfonia to Cantata Number 29, made by the musician demian as a tribute to Wendy Carlos. Several musical lines need to remain distinct. Their different attacks, sustained sounds, and harmonic balances help you follow them through the arrangement.\n\nWe'll hear five minutes of “Acid Tracks,” then demian's synthesized Bach performance. In Phuture, follow the repeating bass figure while its brightness changes. In Bach, choose one musical line and notice which qualities of its sound help you follow it through the arrangement.",
         "sources": [
           {
             "title": "Carlos: recording and track listing",
             "url": "https://www.wendycarlos.com/+sobox.html"
+          },
+          {
+            "title": "demian: synthesized Bach performance and credits",
+            "url": "https://www.youtube.com/watch?v=oEgzFxEPitA"
           }
         ]
       },
@@ -55,27 +68,31 @@ const PITCH_SESSIONS = [
         "title": "Acid Tracks",
         "artist": "Phuture",
         "album": "Acid Tracks",
-        "context": "Hold the bass pattern in memory while its brightness and resonant emphasis change. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
+        "context": "Hold the bass pattern in memory while its brightness and resonant emphasis change.",
         "sourceUrl": "https://www.youtube.com/watch?v=yKHGv6Es610",
         "youtubeId": "yKHGv6Es610",
-        "endSeconds": 300
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 740
       },
       {
         "type": "music",
-        "title": "Brandenburg Concerto No. 3, first movement",
-        "artist": "Wendy Carlos",
-        "album": "Switched-On Bach (1968)",
-        "context": "Hear each contrapuntal line as a different combination of harmonic balance, attack, and decay. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": "https://www.wendycarlos.com/+sobox.html",
-        "youtubeId": null,
-        "endSeconds": null
+        "title": "Sinfonia to Cantata No. 29 (synthesized)",
+        "artist": "demian · The Grotto Electrasynth-O-Magneticpolyphonic Orchestra",
+        "album": "A tribute to Wendy Carlos",
+        "context": "Follow one musical line through this synthesized Bach performance, listening to its attack and harmonic balance.",
+        "sourceUrl": "https://www.youtube.com/watch?v=oEgzFxEPitA",
+        "youtubeId": "oEgzFxEPitA",
+        "endSeconds": 205,
+        "startSeconds": 0,
+        "duration": 205,
+        "videoSeconds": 205
       },
       {
         "type": "narration",
-        "title": "1C · The horn’s built-in pitches",
-        "text": "An air column supports resonant modes. On a brass instrument, the player's lips interact with that column, and changes in embouchure can select different resonances. With one effective tube length, the available resonances approximate a harmonic series. Valves change the tube length and offer other series; hand-stopping and lip adjustments can also alter pitch. Natural brass is therefore constrained by its resonances without being a perfectly rigid frequency ladder.\n\nDivide a harmonic's frequency by powers of two to bring it into the fundamental's octave. The third harmonic gives a fifth at 3:2. The fifth gives a major third at 5:4. The seventh gives 7:4, a seventh noticeably lower than the equal-tempered minor seventh. The eleventh reduces to 11:8, falling between the equal-tempered fourth and tritone. These pitches are not mistakes in arithmetic. They are mismatches between two systems.\n\nA cent is one hundredth of an equal-tempered semitone. The 7:4 seventh is about 31 cents below the piano's minor seventh; 11:8 is about 49 cents above its fourth. Those numbers describe relative intervals, not absolute notes. Change the fundamental and the whole family moves.\n\nBritten asks the horn to use its unadjusted natural harmonics in the Prologue and Epilogue of his Serenade. The unusual intonation belongs to the composition. Hear it as an invitation to a different pitch landscape.\n\nWhat to listen for: notice the short solo's familiar horn-call shape, then the pitches that resist piano expectations. Let those notes establish their own relationships instead of mentally correcting them.",
+        "title": "1C · The horn’s natural harmonics",
+        "text": "We've used harmonics to understand why sounds have different colors. They also help explain which pitches an instrument can produce. For our last example, we'll hear the solo horn at the beginning of Britten's Serenade.\n\nBritten asks the player to use natural harmonics, without the usual adjustments to bring them into conventional tuning. Some intervals may sound unfamiliar if you're used to hearing them on a piano. We'll return to that difference in the next two sessions.\n\nA brass player's lips interact with the air inside the instrument. For a given length of tubing, that air column has a series of resonances, approximately following the harmonic series. The player can move among them by changing how the lips vibrate. Valves change the effective tube length; the hand and lips can also adjust individual pitches.\n\nThe distance between two pitches is called an interval. An octave is the interval made by doubling a frequency. Other intervals have names such as fifth and third; the harmonic series gives us particular versions of them. The third harmonic, brought down an octave, makes a fifth above the fundamental. Its frequency ratio is three to two. The fifth harmonic gives a major third at five to four. The seventh gives a seventh at seven to four, lower than the corresponding piano interval. Another higher harmonic falls between two neighboring piano notes. You can hear the difference without knowing its number.\n\nThe short Prologue will play next. Listen to the shape of the horn phrase, and notice any notes whose tuning surprises you. You don't need to identify the harmonic numbers by ear. We're beginning to hear why a familiar instrument and a piano can give us different versions of an interval.",
         "sources": [
           {
             "title": "Britten’s publisher: natural harmonics",
@@ -87,12 +104,19 @@ const PITCH_SESSIONS = [
         "type": "music",
         "title": "Prologue from Serenade for Tenor, Horn and Strings",
         "artist": "Benjamin Britten",
-        "album": "Serenade, op. 31 · choose Dennis Brain or Barry Tuckwell",
-        "context": "Listen to the unadjusted natural harmonics; the seventh and eleventh help explain the unfamiliar intonation. Suggested listening window: 3 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 3,
-        "sourceUrl": "https://www.boosey.com/pages/cr/catalogue/cat_detail?=&langid=1&musicid=3880",
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Serenade, op. 31 · Barry Tuckwell",
+        "context": "Listen to the unadjusted natural harmonics; the seventh and eleventh help explain the unfamiliar intonation.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Y3_tvVEgveE",
+        "youtubeId": "Y3_tvVEgveE",
+        "endSeconds": 85,
+        "startSeconds": 0,
+        "duration": 85,
+        "videoSeconds": 85
+      },
+      {
+        "type": "narration",
+        "title": "Session closing",
+        "text": "We've now heard harmonics in three settings: a voice, synthesized music, and a horn. We listened to how their balance changes tone color, and how their frequencies can also provide a set of pitches to play.\n\nNext time, we'll hold one sound steady and listen to another against it. That will let us hear tuning as a relationship between sounds. If you'd like to experiment before then, the Build a Note lab lets you change the balance of harmonics in a tone."
       }
     ],
     "extra": ""
@@ -105,8 +129,8 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "2A · A reference that keeps sounding",
-        "text": "A drone gives you a pitch to remember without needing memory: it keeps sounding. In Hindustani music, Sa is the tonal reference, chosen for the performer rather than tied to a universal concert pitch. A common tanpura arrangement includes Sa and Pa, the fifth, with octave repetitions. Other tunings replace Pa depending on the raga. The drone is an active field of resonance under the melodic performance.\n\nThe tanpura's characteristic jivari comes from the string's interaction with its shaped bridge. A plucked string has a changing spectrum, so this drone is textured and alive. It is not simply two laboratory sine waves. Listen first to that continuous buzzing halo, then to the singer's relationship to it.\n\nJust intonation describes intervals through ratios of integers. A fifth at 3:2 aligns the third harmonic of the lower note with the second of the upper. If those partials are close but unequal, their interference produces beats. At exact alignment that particular beating stops. Other partials, vibrato, noise, and room acoustics may keep the complete sound moving. A pure ratio does not promise total silence inside a real recording.\n\nPran Nath's slow unfolding gives you time to hear pitch as a relationship. Raga has melodic rules, ornament, and direction; reducing the whole tradition to a table of fixed ratios would miss the music. Use the drone as a reference for listening, not as a substitute for that musical language.\n\nWhat to listen for: hear a solo tanpura first. In the opening of Raga Darbari, follow departures from and returns toward the tonal center. Notice which sustained moments feel settled without assuming every arrival must be the fifth.",
+        "title": "2A · Singing with a tanpura",
+        "text": "Last session, we listened inside one note. This time we'll listen to a note in relation to another sound that keeps going underneath it. A sustained reference, called a drone, makes small changes in tuning easier to hear.\n\nWe'll begin with a tanpura, then a singer performing over a drone. Later, we'll hear sustained sounds in rock, jazz, and organ music. By the end, you'll have a way to listen both for a stable pitch reference and for movement within a held combination of notes.\n\nThe tanpura recording comes first. Each pluck has a buzzing edge, followed by a sound that changes as it fades. Successive plucks overlap, giving a singer a continuing reference.\n\nIn Hindustani music, the tonal reference is Sa. Its pitch is chosen for the performer. A common tanpura tuning includes Sa and Pa, the fifth, repeated across octaves; some ragas call for a different arrangement. The buzz, called jivari, comes from the string's interaction with the shaped bridge. It helps give the instrument its changing upper resonance.\n\nWhen a singer holds a note against the drone, we can hear the relationship between them. In a pure fifth, the upper note vibrates three times for every two vibrations of the lower one. The lower note's third harmonic and the upper note's second harmonic then coincide. If those harmonics are slightly apart, they produce a pulsing sound called beating. As they approach each other, the pulsing slows.\n\nJust intonation describes intervals through whole-number ratios like this. It can help us understand particular moments of resonance. A raga also has its own melodic movements, ornaments, and ways of approaching a note, which take more than a ratio to describe.\n\nWe'll hear two minutes of tanpura on its own, followed by the opening five minutes of Pran Nath's Raga Darbari. First get used to the sustained sound. When the voice enters in the second recording, keep some attention on the drone underneath it. Listen for how the singer's longer notes relate to that reference.",
         "sources": [
           {
             "title": "MELA: Pran Nath discography",
@@ -117,29 +141,33 @@ const PITCH_SESSIONS = [
       {
         "type": "music",
         "title": "Solo tanpura demonstration",
-        "artist": "Tanpura player",
-        "album": "Choose an acoustic Sa–Pa demonstration",
-        "context": "Listen for the bridge buzz and the changing upper spectrum after each pluck. Suggested listening window: 2 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 2,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "artist": "Saiful Taankar",
+        "album": "Acoustic Tanpura C-sharp · Sa–Pa",
+        "context": "Listen for the bridge buzz and the changing upper spectrum after each pluck.",
+        "sourceUrl": "https://www.youtube.com/watch?v=KunxS5WAVfk",
+        "youtubeId": "KunxS5WAVfk",
+        "endSeconds": 120,
+        "startSeconds": 0,
+        "duration": 120,
+        "videoSeconds": 2392
       },
       {
         "type": "music",
         "title": "Raga Darbari (opening)",
         "artist": "Pandit Pran Nath",
-        "album": "Ragas of Morning and Night",
-        "context": "Track the singer against the tanpura. Start with the first five minutes; performance versions differ. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": "https://www.melafoundation.org/JARE_Pgm_PPN%20JULY%202018%20R1.pdf",
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Raga Darbari · SurTaal recording",
+        "context": "Follow the singer against the tanpura during the opening five minutes.",
+        "sourceUrl": "https://www.youtube.com/watch?v=P7QaLZc-xFw",
+        "youtubeId": "P7QaLZc-xFw",
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 1453
       },
       {
         "type": "narration",
-        "title": "2B · Still harmony, moving surfaces",
-        "text": "A familiar pop arrangement moves from chord to chord. A drone-centered arrangement can leave its harmonic foundation relatively still and make everything above it change: rhythm, register, distortion, ornament, and density. The absence of a conventional chord sequence does not mean nothing is happening. It changes where you put your attention.\n\n“Tomorrow Never Knows” places a vocal line inside a looping, layered sound world. Listen for recurring percussion and the changing sounds around the voice. A sustained tonal center can make each new texture feel unusually vivid because it does not need to announce a new chord at the same time. This is a listening comparison with Indian drone practice, not a claim that the two traditions share identical tuning rules.\n\nIn “Venus in Furs,” the abrasive viola helps hold the music in place while the song moves around it. Focus on the bow's texture: pressure, noise, and roughness can carry as much information as a melody. The track still has musical motion and harmonic detail. “Static” here is relative to a song organized around a strongly contrasting chord progression.\n\nJohn Cale's involvement in the Theatre of Eternal Music provides a historical bridge to Session 5. That connection is more specific than calling all long held notes minimalist. The same technique can serve very different purposes: ritual continuity, a rock song's tension, or close attention to acoustic interference.\n\nWhat to listen for: try marking each moment you think the underlying harmony changes. Then replay and attend only to the changing surface. In both recordings, ask how much momentum comes from timbre and repetition rather than chord travel.",
+        "title": "2B · Songs that stay near one chord",
+        "text": "The tanpura gave the singer a sustained reference while the melody moved around it. We'll keep listening for that relationship as we move into two rock songs. The musical traditions and tuning practices differ, but the relatively steady foundation gives us a useful comparison.\n\nFirst comes the Beatles' “Tomorrow Never Knows.” The percussion keeps returning while sounds enter and leave around the voice. Much of the movement comes from those changes in the arrangement.\n\nThe viola in the Velvet Underground's “Venus in Furs” gives us another sustained sound to follow. You can hear the bow working against the strings, with a roughness that continues underneath the song. Pay attention to how that texture affects the passage even when it doesn't offer a new melody.\n\nThe viola player, John Cale, had also worked in the Theatre of Eternal Music, the ensemble we'll return to with La Monte Young. That connection gives us a way to follow sustained tones from an experimental music practice into a rock arrangement. Here they sit alongside the voice, percussion, and the structure of a song.\n\n“Tomorrow Never Knows” will play first, followed by an excerpt from “Venus in Furs.” In the Beatles, follow the repeating foundation while new sounds enter around it. In the Velvet Underground, listen for the viola's sustained texture underneath the voice. Notice how each song keeps moving while remaining close to a tonal center.",
         "sources": [
           {
             "title": "Young and Zazeela: Theatre of Eternal Music notes",
@@ -152,27 +180,31 @@ const PITCH_SESSIONS = [
         "title": "Tomorrow Never Knows",
         "artist": "The Beatles",
         "album": "Revolver",
-        "context": "Follow the persistent tonal center, then the changing tape-loop textures and percussion. Suggested listening window: 3 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 3,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Follow the persistent tonal center, then the changing tape-loop textures and percussion.",
+        "sourceUrl": "https://www.youtube.com/watch?v=m4BuziKGMy4",
+        "youtubeId": "m4BuziKGMy4",
+        "endSeconds": 178,
+        "startSeconds": 0,
+        "duration": 178,
+        "videoSeconds": 178
       },
       {
         "type": "music",
         "title": "Venus in Furs",
         "artist": "The Velvet Underground",
         "album": "The Velvet Underground & Nico",
-        "context": "Follow Cale’s viola through the song. Hear sustained texture alongside the actual harmonic movement. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Follow Cale’s viola through the song. Hear sustained texture alongside the actual harmonic movement.",
+        "sourceUrl": "https://www.youtube.com/watch?v=KR7Lv8XZtkk",
+        "youtubeId": "KR7Lv8XZtkk",
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 312
       },
       {
         "type": "narration",
-        "title": "2C · Beating becomes something to follow",
-        "text": "Play 200 hertz beside 202 hertz and their combined loudness swells and recedes about twice each second. The beat rate equals the difference in frequency. Very slow beating can sound like a gentle pulse; faster differences become flutter and eventually other perceptual textures. You are hearing interaction rather than a third player adding a rhythm.\n\nFor an interval, compare partials as well as fundamentals. If a lower tone is 200 hertz and its partner is 301, the lower tone's third harmonic is 600 while the upper's second is 602. That pair beats twice per second even though the two fundamentals are far apart. Move the upper note to 300 and those partials align. This is the link between tuning and the shimmer inside a chord.\n\nAlice Coltrane's title track combines a drone foundation with bass, percussion, harp, and saxophone. It opens the jazz side of this session. Listen for an enduring reference underneath active improvisation. It is not a controlled demonstration of pure-tone beating.\n\nMalone's sustained organ music slows your attention to the interior of held combinations. The 2025 edition's notes identify “Spectacle of Ritual” as recorded on an organ in Kirnberger III temperament. That is an unequal temperament, not a blanket claim of just intonation. Different keys and intervals can have different amounts of beating.\n\nWhat to listen for: in Coltrane, keep the drone in your ear while following the improvisers. In Malone, choose one held chord and listen for slow amplitude motion. Describe what you hear before trying to name its exact tuning.",
+        "title": "2C · Hearing the beats between tones",
+        "text": "So far, we've followed the melody and texture above a sustained sound. Now we'll pay closer attention to a slower movement that can occur within two tones held together. This pulsing is called beating.\n\nIf two steady tones sound at 200 and 202 hertz, their combined sound grows louder and softer about twice a second. Bring their frequencies closer, and the pulsing slows. The Tuning & Beating lab lets you try this later; you don't need to open it now.\n\nBeating can also occur between the harmonics of two different notes. Even when the main pitches are well apart, some upper components may lie close together. Small tuning adjustments can change that pulsing, which is one reason a held chord may sound more settled as musicians adjust their notes.\n\nOur two recordings give you different settings in which to listen to sustained sound. In Alice Coltrane's “Journey in Satchidananda,” a drone remains underneath the bass, percussion, harp, and saxophone. Follow that reference while the other parts move around it.\n\nKali Malone's “Spectacle of Ritual” holds organ tones long enough for smaller changes to become noticeable. The 2025 edition's notes identify the organ's temperament as Kirnberger III. We'll discuss unequal temperaments in the next session. For now, it means the intervals aren't all adjusted in the same way, so different combinations can produce different beating patterns.\n\nWe'll hear an excerpt from “Journey in Satchidananda,” then “Spectacle of Ritual.” In Coltrane, keep track of the drone underneath the improvisation. In Malone, stay with one held combination and listen for a slow pulse within it. The movement may be subtle; concentrate on a sustained moment rather than trying to identify the tuning by ear.",
         "sources": [
           {
             "title": "Impulse: Coltrane album",
@@ -189,25 +221,34 @@ const PITCH_SESSIONS = [
         "title": "Journey in Satchidananda",
         "artist": "Alice Coltrane",
         "album": "Journey in Satchidananda",
-        "context": "Hold attention on the drone beneath the bass ostinato and improvisation. Suggested listening window: 6 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 6,
+        "context": "Hold attention on the drone beneath the bass ostinato and improvisation.",
         "sourceUrl": "https://www.youtube.com/watch?v=azORE4Hff94",
         "youtubeId": "azORE4Hff94",
-        "endSeconds": 360
+        "endSeconds": 360,
+        "startSeconds": 0,
+        "duration": 360,
+        "videoSeconds": 396
       },
       {
         "type": "music",
         "title": "Spectacle of Ritual",
         "artist": "Kali Malone",
         "album": "The Sacrificial Code · 2025 edition",
-        "context": "Listen to the interior of the organ chords. This recording uses Kirnberger III temperament; do not label it pure JI. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": "https://kalimalone.bandcamp.com/album/the-sacrificial-code-2025-edition",
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Listen to the interior of the organ chords. This recording uses Kirnberger III temperament; do not label it pure JI.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Nbdgl2TYKno",
+        "youtubeId": "Nbdgl2TYKno",
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 654
+      },
+      {
+        "type": "narration",
+        "title": "Session closing",
+        "text": "A drone gave us a continuing pitch reference. We also listened for beating: the pulsing that can occur when frequencies lie close together. These give us two ways to pay attention to tuning in a performance.\n\nIn the next session, we'll hear why a keyboard needs to distribute small tuning adjustments across its notes, and compare that with the freedom singers have to adjust a chord. The optional Tuning & Beating lab lets you slow the pulse between two tones until their frequencies meet."
       }
     ],
-    "extra": "Whole album option: Alice Coltrane, Journey in Satchidananda."
+    "extra": ""
   },
   {
     "title": "The compromise",
@@ -217,12 +258,16 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "3A · Why the fifths will not close",
-        "text": "Start on C and climb twelve perfectly pure fifths. Reduce by octaves as needed. You expect to return to a C, but you arrive slightly higher. Twelve factors of 3:2 do not equal seven factors of 2:1. Their mismatch, about 23.46 cents, is the Pythagorean comma. The circle of fifths is a useful diagram, but acoustically it does not close without adjustment.\n\nMeantone temperaments narrow fifths to improve thirds. In quarter-comma meantone, selected major thirds become pure 5:4 intervals, while a conventional twelve-note layout leaves an unusably wide closing fifth, the wolf. Extra keys can extend the usable region. This is a practical tradeoff between lovely local relationships and freedom to move to distant keys.\n\nCirculating well temperaments distribute adjustment so that all keys become usable, with different interval colors from key to key. Twelve-tone equal temperament divides the octave into twelve equal logarithmic steps: each multiplies frequency by the twelfth root of two. Its fifth is about two cents narrow and its major third about fourteen cents wide compared with pure ratios. Transposition becomes uniform at the cost of those interval adjustments.\n\nThe title The Well-Tempered Clavier does not settle which exact temperament Bach intended. For a meaningful comparison, use the same generated performance and instrument sound with only its tuning changed. Two unrelated piano recordings also differ in tempo, touch, and instrument.\n\nWhat to listen for: compare BWV 846 in equal temperament and Kirnberger III or Werckmeister III using the linked demonstrations. Attend to thirds, sustained resonance, and changes of harmonic color. Avoid assigning every performance difference to temperament.",
+        "title": "3A · Tuning a keyboard",
+        "text": "In the last session, we heard how a sustained reference can help us notice tuning, and how nearby frequencies produce beating. A singer can adjust a note from moment to moment. A keyboard presents a different problem: its pitches need to work across many different chords.\n\nThis session looks at the compromises involved. We'll compare two keyboard tunings in Bach, listen to a quartet adjusting its voices, and finish with software that changes the pitch of a recorded voice.\n\nSuppose you're tuning a keyboard by ear, using a series of pure fifths. After twelve fifths, the note name comes back to where you started. The pitch, however, ends up slightly higher than the starting note's octaves.\n\nThat small difference is called the Pythagorean comma. It is a little less than a quarter of the distance between neighboring piano notes, which we call a semitone. Twelve pure fifths don't fit into seven octaves. A keyboard with twelve notes per octave needs some adjustment, and different tuning systems place it in different intervals.\n\nQuarter-comma meantone narrows the fifths enough to give selected major thirds a pure five-to-four ratio. On a conventional twelve-note layout, this leaves a very wide closing fifth, known as the wolf. Some keys work well; others run into that interval. Additional keys can extend the useful range.\n\nCirculating well temperaments spread the adjustment so that all keys can be used, while retaining differences among them. Equal temperament distributes the octave into twelve equal steps. Its fifths are slightly narrower than pure fifths, and its major thirds are wider than pure thirds. The interval sizes stay the same when you move to another key.\n\nArthur Bocaneanu made our next comparison by playing the same digital performance through the same sampled harpsichord sound, changing only its tuning. The title The Well-Tempered Clavier doesn't tell us which exact temperament Bach intended.\n\nThe comparison starts with Bach's C-major Prelude in equal temperament, then plays the same performance in Werckmeister Three. You'll hear the piece begin again when the tuning changes, about two minutes into our excerpt. Listen to the resonance around the chords. A small change in their smoothness or activity is enough to notice; you don't need to name each interval.",
         "sources": [
           {
             "title": "Bol Processor: same-piece temperament comparisons",
             "url": "https://bolprocessor.org/comparing-temperaments/"
+          },
+          {
+            "title": "Arthur Bocaneanu: same-performance temperament comparison",
+            "url": "https://www.youtube.com/watch?v=f8M-JzIwbog"
           }
         ]
       },
@@ -230,17 +275,19 @@ const PITCH_SESSIONS = [
         "type": "music",
         "title": "Prelude in C, BWV 846 · tuning comparison",
         "artist": "J. S. Bach",
-        "album": "Equal temperament versus Kirnberger III / Werckmeister III",
-        "context": "Use the same-render comparison on the linked page. Compare thirds and their beating rather than tempo or performance style. Suggested listening window: 6 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 6,
-        "sourceUrl": "https://bolprocessor.org/comparing-temperaments/",
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Arthur Bocaneanu · equal temperament, then Werckmeister III",
+        "context": "The same MIDI performance plays first in equal temperament, then in Werckmeister III. Listen for changes in the thirds and sustained resonance.",
+        "sourceUrl": "https://www.youtube.com/watch?v=f8M-JzIwbog",
+        "youtubeId": "f8M-JzIwbog",
+        "endSeconds": 385,
+        "startSeconds": 128,
+        "duration": 257,
+        "videoSeconds": 385
       },
       {
         "type": "narration",
-        "title": "3B · Four singers, more than four pitches",
-        "text": "A choir can adjust pitch continuously. A keyboard cannot change the tuning of an individual held key to suit the chord around it. That freedom lets singers find relationships that reduce beating between important partials. It requires listening and adjustment rather than simply matching a piano before the performance.\n\nThe barbershop seventh offers a striking example. Think of four voices related approximately as 4:5:6:7. Normalize the lowest to one and the chord becomes 1, 5:4, 3:2, 7:4. The top note is the harmonic seventh you met in Session 1, around 31 cents lower than the equal-tempered minor seventh. Sing it too high by that reference and you change the alignment of the chord's harmonics.\n\n“Ringing” also depends on balanced vowels, matched timbre, steady breath, and the arrangement. When partials reinforce each other, listeners may hear an upper pitch more distinctly than they can assign to one singer. The impression can be that an extra voice has appeared. Some perceived pitches involve auditory processing too; hearing an additional pitch is not a simple count of extra physical sound sources.\n\nNot every chord in a barbershop song is a harmonic seventh, and singers must negotiate voice-leading and tonal direction. Pure ratios are a tool inside a performance. Listen to the final sustained tag of Vocal Spectrum's “Go the Distance” for the blend, then search through the arrangement for ringing seventh chords without claiming each held chord has that exact structure.\n\nWhat to listen for: track the bass, then the highest voice, then stop separating parts and hear the combined resonance. Notice whether a stable chord feels larger than four individual lines.",
+        "title": "3B · How a quartet tunes a chord",
+        "text": "The Bach comparison kept the performance the same and changed the instrument's tuning. Now we'll hear singers who can adjust their pitches while a chord is sounding.\n\nIn barbershop singing, four voices may hold a chord long enough for an upper pitch to become unusually clear. It can be hard to assign that pitch to any one singer. Barbershoppers describe the combined resonance as ringing.\n\nSingers can adjust a note while they hold it. They listen to the people around them and make small changes in pitch, vowel, and volume. When their harmonics line up and reinforce one another, the chord can take on a more unified sound.\n\nA characteristic barbershop seventh has notes related approximately as four, five, six, and seven. Relative to the bass, that gives a major third at five to four, a fifth at three to two, and a seventh at seven to four. We heard that seventh in the natural horn series. It's lower than the piano's minor seventh, so matching a piano would produce a different relationship.\n\nPitch is only part of the work. Matched vowels, steady breath, and balance help the voices blend. The perception of an additional pitch also involves how we hear the combined sound. A song includes many kinds of chords, and the singers have to carry their lines from one to the next.\n\nVocal Spectrum's “Go the Distance” will play next. Follow the bass for a phrase, then listen to how the other voices combine with it. Near the end, stay with the sustained chord and notice the upper resonance. That ending lets us hear the blend, without needing to assign an exact ratio to every note.",
         "sources": [
           {
             "title": "Barbershop Harmony Society: intonation",
@@ -257,16 +304,18 @@ const PITCH_SESSIONS = [
         "title": "Go the Distance",
         "artist": "Vocal Spectrum",
         "album": "Vocal Spectrum II / live performance",
-        "context": "Hear the sustained final tag and the fused vowel sound; ringing alone does not identify a chord’s exact ratio. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": "https://www.barbershop.org/vocal-spectrumlunch-break-albums-win-cara-awards",
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Hear the sustained final tag and the fused vowel sound; ringing alone does not identify a chord’s exact ratio.",
+        "sourceUrl": "https://www.youtube.com/watch?v=6D-R-qay5lM",
+        "youtubeId": "6D-R-qay5lM",
+        "endSeconds": 221,
+        "startSeconds": 0,
+        "duration": 221,
+        "videoSeconds": 221
       },
       {
         "type": "narration",
-        "title": "3C · When the grid becomes audible",
-        "text": "Equal temperament became established through instruments and musical practice long before software. Digital production inherited it as a convenient default: numbered notes, keyboard interfaces, and reusable parts that transpose predictably. Software can also support other tunings. The interesting question is what happens when its grid becomes an audible feature of a voice.\n\nPitch correction estimates a sung pitch and moves it toward an allowed target. The selected scale determines which targets are available; response settings determine how quickly the correction acts. Slow adjustment can retain much of a singer's movement. Very fast correction can turn a glide into a conspicuous step. It does not automatically quantize every tiny movement in every setting, nor does it create harmonies by itself.\n\nCher's “Believe” makes rapid correction part of the arrangement's identity. Listen for the moments where a syllable seems to hinge mechanically between pitches. The effect is especially vivid because speech has flexible contours and a human voice carries expressive transitions. Making some of those transitions abrupt creates a new performance texture.\n\nBon Iver's “Woods” moves your attention from one treated voice to a growing vocal stack. Layering, processing, and arrangement all contribute to what you hear. Do not assume a single pitch-correction plug-in generated every harmony. Correcting a melody and building a chord from it are separate operations; Session 6 will return to that distinction.\n\nWhat to listen for: in Cher, compare the abrupt transitions with neighboring more fluid syllables. In Bon Iver, follow the accumulating layers and ask which parts share a rhythm, which separate, and how processing helps fuse them.",
+        "title": "3C · Changing the transitions in a voice",
+        "text": "The quartet used small pitch adjustments to help its voices blend. Our next examples bring recorded voices into digital production, where software can move a sung note toward a chosen pitch.\n\nWe'll hear Cher's “Believe,” followed by Bon Iver's “Woods.” In “Believe,” listen for syllables that move abruptly between pitches. Fast pitch correction makes those transitions part of the record's sound.\n\nPitch-correction software estimates the pitch being sung and moves it toward a permitted target. A selected scale determines the available notes. Another setting controls how quickly the correction happens. A slower response can leave much of the singer's movement audible; a fast response can turn a continuous glide into a step.\n\nBon Iver's “Woods” begins with a treated voice and builds a layered vocal arrangement. As more parts accumulate, it becomes harder to follow every line separately. You can still listen for their entrances and for differences in their rhythms.\n\nPitch correction and harmony creation are separate processes. Moving one sung note toward a target doesn't by itself create additional voices. Layering and other processing contribute to the chords in a vocal arrangement.\n\nFirst, listen to “Believe” for abrupt transitions on particular syllables. Then, in “Woods,” follow the entrance of additional vocal parts. Listen for how their pitch and timing affect the combined sound. We'll return to layered voices at the end of the course.",
         "sources": [
           {
             "title": "Antares: pitch correction and the Cher effect",
@@ -279,22 +328,31 @@ const PITCH_SESSIONS = [
         "title": "Believe",
         "artist": "Cher",
         "album": "Believe",
-        "context": "Listen for the abrupt, robotic transitions at selected syllables rather than assuming the entire performance is equally corrected. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Listen for the abrupt, robotic transitions at selected syllables rather than assuming the entire performance is equally corrected.",
+        "sourceUrl": "https://www.youtube.com/watch?v=nZXRV4MezEw",
+        "youtubeId": "nZXRV4MezEw",
+        "endSeconds": 237,
+        "startSeconds": 0,
+        "duration": 237,
+        "videoSeconds": 237
       },
       {
         "type": "music",
         "title": "Woods",
         "artist": "Bon Iver",
         "album": "Blood Bank",
-        "context": "Follow the growing stack of processed vocal layers and their shared articulation. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Follow the growing stack of processed vocal layers and their shared articulation.",
+        "sourceUrl": "https://www.youtube.com/watch?v=MUGKbuWMqgU",
+        "youtubeId": "MUGKbuWMqgU",
+        "endSeconds": 286,
+        "startSeconds": 0,
+        "duration": 286,
+        "videoSeconds": 286
+      },
+      {
+        "type": "narration",
+        "title": "Session closing",
+        "text": "This session brought together three ways of placing a note: a keyboard's prepared tuning, a quartet's adjustments while singing, and software moving a recorded voice toward selected pitches.\n\nIn the next session, we'll listen more closely to the movement between those pitches. Blues singing, slide guitar, and synthesizer glides will give us different ways to hear how a note approaches and leaves its destination."
       }
     ],
     "extra": ""
@@ -307,36 +365,40 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "4A · Blue notes are gestures",
-        "text": "The piano offers one minor third and one major third for each root. A singer or guitarist can visit the territory between them, approach a pitch from below, or make a phrase's intonation change with its emotional weight. A blue third can therefore be a region and a gesture, not a hidden thirteenth piano key.\n\nA neutral third often means a third between the usual minor and major sizes. That label is useful for describing an impression, but it does not establish one fixed blues frequency ratio. The seventh can also vary. The harmonic seventh at 7:4 provides a revealing comparison with the piano, yet hearing a low seventh does not prove a performer has selected that exact ratio.\n\nBlues grew through African American musical practice, with deep African inheritances and many later encounters. Comparing Robert Johnson with Ali Farka Touré can sharpen your attention to vocal inflection and guitar response. It should not turn a complex history into the claim that one modern recording demonstrates the single origin of another. Similar sounding techniques need both careful listening and historical context.\n\nIn Johnson's “Cross Road Blues,” the voice and guitar can imply pitch differently while maintaining a coherent phrase. In Touré and Ry Cooder's “Ai Du,” listen for the relationship between the repeating guitar pattern and the sung line. A repeated pattern gives you a reference against which small inflections stand out.\n\nWhat to listen for: hum the root, then sing the expressive third you actually hear. Does it settle, slide, or vary between phrases? Compare the voice with the guitar without forcing either into the nearest piano key.",
+        "title": "4A · The pitch of a blue note",
+        "text": "The last session ended with software making some vocal transitions more abrupt. This session turns toward the continuous movement between notes. A singer can approach a pitch gradually, and a guitarist can bend or slide into it. We'll listen to what those movements contribute to a phrase.\n\nWe'll begin with Robert Johnson's “Cross Road Blues,” followed by Ali Farka Touré and Ry Cooder's “Ai Du.” Later, we'll follow slides and bends on electric guitar, then listen for pitch movement in electronic sounds.\n\nA piano gives you separate keys for the minor and major third. A singer or guitarist can use pitches between them. The term neutral third describes an interval between those two familiar sizes, but a blues phrase doesn't have to settle at one fixed point. Its tuning can change with the words and with the direction of the melody.\n\nSevenths can vary too. The natural seventh at seven to four, which we've already heard, is one useful comparison. A low-sounding seventh in a performance isn't enough to establish that exact ratio. You can hear its relationship to the other notes without assigning it a precise number.\n\nBlues developed through African American musical practice, with deep African inheritances. These recordings let us compare particular ways a voice and guitar respond to each other, while leaving room for the different histories behind them.\n\nJohnson's “Cross Road Blues” comes first, followed by an excerpt from “Ai Du.” Follow one vocal phrase at a time. Notice whether a note holds still or changes during the syllable, and how the guitar responds. In “Ai Du,” the repeating guitar pattern gives you a reference while the voice moves above it.",
         "sources": []
       },
       {
         "type": "music",
         "title": "Cross Road Blues",
         "artist": "Robert Johnson",
-        "album": "1936 recording · choose take 1",
-        "context": "Compare vocal thirds and sevenths with the guitar’s pitch gestures; do not infer exact ratios from the old recording. Suggested listening window: 3 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 3,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Robert Johnson · original recording",
+        "context": "Compare vocal thirds and sevenths with the guitar’s pitch gestures; do not infer exact ratios from the old recording.",
+        "sourceUrl": "https://www.youtube.com/watch?v=bJ_7nYEpkBo",
+        "youtubeId": "bJ_7nYEpkBo",
+        "endSeconds": 149,
+        "startSeconds": 0,
+        "duration": 149,
+        "videoSeconds": 149
       },
       {
         "type": "music",
         "title": "Ai Du",
         "artist": "Ali Farka Touré with Ry Cooder",
         "album": "Talking Timbuktu",
-        "context": "Follow the repeating guitar figure while the voice changes its contour and emphasis. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Follow the repeating guitar figure while the voice changes its contour and emphasis.",
+        "sourceUrl": "https://www.youtube.com/watch?v=GZrHGJKIUE8",
+        "youtubeId": "GZrHGJKIUE8",
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 432
       },
       {
         "type": "narration",
-        "title": "4B · A pitch can have a route",
-        "text": "A fretted guitar usually gives discrete stopping points, but bending a string raises its tension and changes frequency continuously. A slide changes the vibrating length without being restricted to the frets. Vibrato repeatedly moves around a pitch. All three make a note's path part of its identity.\n\nA target note and the motion toward it are different things to hear. One phrase might strike a note cleanly, another start below and bend up, and another overshoot before returning. Those routes can communicate urgency, restraint, or instability even when the destination is the same. A transcription with only noteheads often hides this information.\n\nDuane Allman's slide on the Allman Brothers Band's “Statesboro Blues” lets you hear pitch arrive through motion. Listen for the shape of the approach and the sustaining vibrato. Slide playing requires accurate choices; continuous pitch does not mean aimlessness. The player can make a destination sound inevitable without striking it directly.\n\nHendrix's “Voodoo Child (Slight Return)” combines bends with a changing electric guitar timbre. Distortion adds spectral energy, and a wah pedal changes filtering. That distinction links back to acid house: brighter does not automatically mean higher. Try following pitch while disregarding the movement of the filter, then reverse your attention.\n\nWhat to listen for: choose a single arrival in each recording. Hum the destination, replay its approach, and describe whether the line slides, bends, jumps, or shakes around it. Then compare the pitch movement with the changes in brightness.",
+        "title": "4B · Sliding and bending into a note",
+        "text": "In those songs, a vocal phrase could move through pitches between the familiar keyboard notes. We'll now follow that movement on electric guitar, where the player can bend a string or move a slide along it.\n\nFirst comes Duane Allman's slide playing on the Allman Brothers Band's “Statesboro Blues.” Listen for the approach to a sustained note, then for the smaller movement once it arrives.\n\nA slide moves along the string, changing its vibrating length without stopping at the frets. Bending a string changes its tension and raises its pitch. Both allow continuous movement between notes. Vibrato adds a repeated movement around a pitch once the player has reached it.\n\nThose movements have shapes you can follow. A note can begin just below its destination and rise slowly. It can move quickly, overshoot, then return. A player can also strike a pitch directly and wait before adding vibrato. Listening to the approach and the sustained portion separately helps you hear these choices.\n\nHendrix's “Voodoo Child (Slight Return)” adds changes in guitar tone to that pitch movement. Distortion changes the harmonic content, while a wah pedal changes the filtering. The result can make it harder to tell whether you're hearing a rise in pitch, an increase in brightness, or both.\n\nWe ran into a similar distinction with “Acid Tracks.” There, a changing filter altered the sound of a repeating bass figure. Here you can hear filtering alongside the movement of a bent string.\n\nWe'll hear “Statesboro Blues” first, then “Voodoo Child (Slight Return).” In each, follow a note as it approaches a sustained pitch. Once you can hear that movement, notice whether the guitar's brightness is changing too.",
         "sources": [
           {
             "title": "Hendrix: official performance archive",
@@ -349,27 +411,31 @@ const PITCH_SESSIONS = [
         "title": "Statesboro Blues",
         "artist": "The Allman Brothers Band · Duane Allman, slide guitar",
         "album": "At Fillmore East (1971)",
-        "context": "Follow the slide into a target, then the vibrato after arrival. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Follow the slide into a target, then the vibrato after arrival.",
+        "sourceUrl": "https://www.youtube.com/watch?v=dWy3Q30Cn2A",
+        "youtubeId": "dWy3Q30Cn2A",
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 258
       },
       {
         "type": "music",
         "title": "Voodoo Child (Slight Return)",
         "artist": "The Jimi Hendrix Experience",
         "album": "Electric Ladyland",
-        "context": "Separate string bends from the wah’s changing brightness. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
+        "context": "Separate string bends from the wah’s changing brightness.",
         "sourceUrl": "https://www.youtube.com/watch?v=L7UMubmfbH0",
         "youtubeId": "L7UMubmfbH0",
-        "endSeconds": 300
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 313
       },
       {
         "type": "narration",
-        "title": "4C · Electronic pitch beyond a keyboard",
-        "text": "A synthesizer's keys are an interface, not a law of sound. A pitch wheel, ribbon, glide control, or automation lane can move an oscillator continuously between keyed notes. The same instrument can provide an equal-tempered reference and a way to leave it. The player's gestures decide how those two possibilities interact.\n\nVangelis's “Blade Runner Blues” offers a voice-like electronic line with expressive pitch movement. Listen to the beginning and ending of each long tone, where the route between destinations becomes clear. The CS-80's ribbon belongs to this vocabulary of continuous control, but an audible glide alone cannot establish which particular control produced each gesture in a finished recording.\n\nPercussion can have pitch too. A short noisy attack can obscure a tonal decay; extend the decay and you may begin to hear the drum as a bass note. A TR-808-style kick is a useful bridge between rhythm and pitched sound. Producers can alter or sample that sound to make pitched bass lines. This possibility is broader than the factory controls on the original machine.\n\nRoland identifies the TR-808 in “Love Lockdown.” Listen to the low electronic pulse separately from the larger percussion in the choruses. Calling all those drums “tuned toms in the key” would go beyond the evidence. This track illustrates pitched percussion, not a verified microtonal tuning system.\n\nWhat to listen for: in Vangelis, trace a glide with your voice. In Kanye, listen past the initial impact to the low decay. Can you hum it? Notice when a percussion sound begins to function as part of the harmonic foundation.",
+        "title": "4C · Glides and low drum tones",
+        "text": "The guitar examples let us hear a pitch change continuously as a player moves a string or slide. A synthesizer can also move between the notes selected on its keyboard. We'll hear that in Vangelis's “Blade Runner Blues.”\n\nIts long phrases give you time to follow the entrance of a note, its held sound, and the movement into the next pitch. Listen to the whole phrase before trying to separate those parts.\n\nA synthesizer keyboard provides a set of starting pitches. Controls such as a pitch wheel, ribbon, or glide setting allow movement between them. The CS-80's ribbon is one example of a continuous pitch control. A finished recording lets us hear the gesture, though a glide by itself doesn't identify the control that made it.\n\nThere's another way electronic instruments complicate the distinction between a note and a sound effect. A drum hit can begin with a brief, noisy attack, then leave a low tonal decay. If you listen beyond the initial impact, that tail may have a pitch you can hum.\n\nA TR-808-style bass drum is a useful example. Its low tone can contribute to both the pulse and the bass register of an arrangement. Producers can also process or sample drum sounds to create pitched lines, with possibilities that extend beyond the original machine's controls.\n\nRoland identifies the TR-808 in Kanye West's “Love Lockdown.” Use the recording to listen separately to the low electronic pulse and the larger percussion that enters around it. It doesn't establish an exact tuning for all of those drum parts.\n\n“Blade Runner Blues” comes first. Follow a long synth phrase and listen to how one pitch moves toward the next. Then, in “Love Lockdown,” listen beyond the impact of the low electronic drum to its tonal decay. That second example shifts our attention from a sliding melody to a percussion sound with an audible low tone.",
         "sources": [
           {
             "title": "Roland: TR-808 in Love Lockdown",
@@ -382,22 +448,31 @@ const PITCH_SESSIONS = [
         "title": "Blade Runner Blues",
         "artist": "Vangelis",
         "album": "Blade Runner soundtrack",
-        "context": "Trace the synth line’s pitch slides; the recording does not by itself identify the control used. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
+        "context": "Trace the synth line’s pitch slides; the recording does not by itself identify the control used.",
         "sourceUrl": "https://www.youtube.com/watch?v=ECYLHiXvrBQ",
         "youtubeId": "ECYLHiXvrBQ",
-        "endSeconds": 300
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 534
       },
       {
         "type": "music",
         "title": "Love Lockdown",
         "artist": "Kanye West",
         "album": "808s & Heartbreak",
-        "context": "Separate the low electronic pulse from the chorus percussion. Listen for tonal decay without asserting tuned toms. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": "https://articles.roland.com/love-lockdown-kanye-west/",
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Separate the low electronic pulse from the chorus percussion. Listen for tonal decay without asserting tuned toms.",
+        "sourceUrl": "https://www.youtube.com/watch?v=HZwMX6T5Jhk",
+        "youtubeId": "HZwMX6T5Jhk",
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 275
+      },
+      {
+        "type": "narration",
+        "title": "Session closing",
+        "text": "We followed vocal inflections, bent strings, sliding guitar notes, and electronic pitch movement. In each example, the way a sound changed during a phrase contributed to what we heard.\n\nNext time, we'll move from individual gestures to pieces organized around different sets of pitches. The first example will be a piano whose familiar keys have been given a different tuning."
       }
     ],
     "extra": ""
@@ -410,8 +485,8 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "5A · Retuning the familiar instrument",
-        "text": "A piano's keyboard looks like a fixed map: twelve familiar pitch classes repeating in octaves. Retune the strings and the map's appearance stays the same while its relationships change. You do not need more keys to leave equal temperament. You need a different assignment of frequencies to the keys you already have.\n\nLa Monte Young's The Well-Tuned Piano makes just intonation the foundation for an extended musical world. Listen for how repeated figures and sustained resonance invite you inside a sonority. Some upper pitches may become perceptually distinct as harmonics reinforce each other. Rapid repeated notes can also blur into a continuous field. Avoid treating every emergent sensation as a new note that has somehow appeared from nothing.\n\nThe title invites comparison with Bach's Well-Tempered Clavier, but well-tuned and well-tempered describe different priorities here. Temperament adjusts interval relationships to make a practical system; Young chooses a specific network of ratios and composes through what it makes possible. Just intonation is a family of systems rather than one universal scale.\n\nThe Theatre of Eternal Music supplies the link back to John Cale's drone practice. Historical accounts of the ensemble also involve differing views of authorship and collaboration. The listening connection is clear enough: long duration lets small interactions between sustained tones become a large part of the experience.\n\nWhat to listen for: give one passage ten uninterrupted minutes. Attend to the residual sound after an attack and to upper pitches inside a dense repeating figure. Try describing the chord's interior rather than following a tune. The excerpt is a doorway into a much longer work.",
+        "title": "5A · A piano with a different tuning",
+        "text": "Last session, musicians moved between familiar notes within a phrase. In this session, we'll hear pieces built around different sets of pitches from the outset. We'll begin with a retuned piano, then hear microtonal rock and electronic music, and finish with instruments Harry Partch built for his own tuning system.\n\nMicrotonal is a broad term for music using pitch relationships beyond the usual twelve-note equal-tempered system. It doesn't identify one particular scale. The recordings in this session use different approaches, and we'll introduce each before it plays.\n\nA piano can look completely familiar after its strings have been retuned. The pattern of black and white keys stays the same, while the intervals between them change.\n\nWe'll hear Michael Harrison's Tone Cloud One, from Revelation: Music in Pure Intonation. Harrison uses a retuned piano, with pitches related through a chosen set of ratios. Repeated figures and sustained resonance give you time to become familiar with those relationships.\n\nAfter each attack, some upper harmonics may become easier to hear as they reinforce one another. In denser passages, repeated notes can run together, making it difficult to separate the attacks from the sound they sustain. Try staying with that resonance for a while instead of immediately looking for the next phrase.\n\nHarrison's mentor La Monte Young explored a different just-intonation tuning in The Well-Tuned Piano. Each composer chooses the relationships for a particular work. Just intonation allows many such systems, depending on which ratios are used.\n\nYoung's work with the Theatre of Eternal Music also connects this session to John Cale and the viola we heard in “Venus in Furs.” The connection we're listening for is the time given to sustained sound and to the interactions within it.\n\nMichael Harrison's “Tone Cloud One” will play next, for about eight minutes. Give yourself time to settle into the repeated figures. Follow a piano attack into its resonance, then listen for upper pitches within the sustained sound. You can let the passage continue without counting or identifying each note.",
         "sources": [
           {
             "title": "MELA: authorized edition and performance",
@@ -420,36 +495,34 @@ const PITCH_SESSIONS = [
           {
             "title": "Theatre of Eternal Music notes",
             "url": "https://www.melafoundation.org/theatre.pdf"
+          },
+          {
+            "title": "Michael Harrison: Revelation performance and program notes",
+            "url": "https://www.youtube.com/watch?v=21ionIZK_8I"
           }
         ]
       },
       {
         "type": "music",
-        "title": "The Well-Tuned Piano (excerpt)",
-        "artist": "La Monte Young",
-        "album": "Choose a documented performance; start with ten minutes",
-        "context": "Follow resonance and upper partials within repeated figures. Different performances are not interchangeable timestamps. Suggested listening window: 10 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 10,
-        "sourceUrl": "https://www.melafoundation.org/TWTP2018.html",
-        "youtubeId": null,
-        "endSeconds": null
+        "title": "Tone Cloud I",
+        "artist": "Michael Harrison",
+        "album": "Revelation: Music in Pure Intonation",
+        "context": "Hear the upper resonance within repeated piano figures in Harrison’s just-intonation tuning.",
+        "sourceUrl": "https://www.youtube.com/watch?v=BEG_psOc4E0",
+        "youtubeId": "BEG_psOc4E0",
+        "endSeconds": 494,
+        "startSeconds": 0,
+        "duration": 494,
+        "videoSeconds": 494
       },
       {
         "type": "narration",
-        "title": "5B · More steps, or a different staircase",
-        "text": "There are at least two ways to expand a pitch map. You can add positions between familiar notes, or you can redesign the interval system itself. Those choices can produce very different listening experiences. An extra fret on a guitar does not imply that its music uses every available new pitch equally.\n\nTwenty-four-tone equal temperament divides the octave into twenty-four equal steps of fifty cents each. Its quarter-tones bisect the usual semitones. It is still a temperament: more steps do not automatically make every harmonic ratio exact. A musician may use only a small selection of those positions to build a distinctive scale.\n\nKing Gizzard's microtonal guitars make selected between-key positions available while preserving the force of riffs and repetition. “Rattlesnake” is useful because a recurring pattern gives your ear repeated chances to learn its intervals. Listen for notes that initially feel unfamiliar and then become stable landmarks. Describe the chosen pattern rather than assuming a complete chromatic tour of twenty-four pitches.\n\nWendy Carlos goes further in “Beauty in the Beast.” Her own notes identify Alpha and Beta scales in the title track. These divide intervals into equal steps that do not preserve the conventional octave framework in the usual way. It is a different design problem from adding quarter-tones to a familiar octave. Her electronic timbres can make unfamiliar interval relationships feel like the native language of the piece.\n\nWhat to listen for: in King Gizzard, learn a repeated riff until its altered intervals stop feeling accidental. In Carlos, follow a melodic phrase and notice how it stays coherent while resisting the keyboard map you expect.",
+        "title": "5B · Learning unfamiliar intervals",
+        "text": "Harrison's piano gave us time to listen within a sustained, repeating sound. Our next two tracks introduce unfamiliar intervals through a more prominent beat and a recurring riff or melody. Repetition gives you a chance to become familiar with the tuning as the track continues.\n\nFirst we'll hear King Gizzard and the Lizard Wizard's “Rattlesnake.” Their microtonal guitars provide selected pitches between the usual fretted notes. Follow the particular notes in the riff and how they work together.\n\nOne system for adding intermediate pitches is twenty-four-tone equal temperament. It divides each ordinary semitone in half, giving twenty-four steps within an octave. Each step is fifty cents; a cent is one hundredth of a piano semitone. These are quarter-tones. Adding steps offers more choices, but it doesn't make all the intervals of the harmonic series exact.\n\nSevish's “Gleam” uses twenty-two-tone equal temperament. The octave is divided into twenty-two equal steps, so most of its pitches fall in different places from both the twelve-tone and twenty-four-tone systems. In his notes for the recording, Sevish describes using familiar chord progressions in that tuning. The repeated electronic phrases give you time to hear their altered intervals.\n\nMicrotonal music includes many ways of organizing pitch. Some retain most of a familiar scale; others change the relationships more extensively. A repeated melody helps you hear how a particular system works in a piece.\n\nWe'll hear six minutes of “Rattlesnake,” followed by four minutes of Sevish's “Gleam.” Follow the recurring riff in King Gizzard, then a recurring melodic phrase in Sevish. Notice whether you begin to anticipate intervals that felt unfamiliar at the start.",
         "sources": [
           {
-            "title": "King Gizzard: album",
-            "url": "https://kinggizzardandthelizardwizard.com/release/flying-microtonal-banana"
-          },
-          {
-            "title": "Eastwood: microtonal guitar design",
-            "url": "https://eastwoodguitars.com/products/sg2c-flying-banana-mt"
-          },
-          {
-            "title": "Carlos: title-track scale notes",
-            "url": "https://www.wendycarlos.com/+bitb.html"
+            "title": "Sevish: Gleam tuning and recording notes",
+            "url": "https://www.youtube.com/watch?v=l9wINwlgxRU"
           }
         ]
       },
@@ -458,27 +531,31 @@ const PITCH_SESSIONS = [
         "title": "Rattlesnake",
         "artist": "King Gizzard & the Lizard Wizard",
         "album": "Flying Microtonal Banana",
-        "context": "Learn the repeated riff’s between-key positions. Additional frets do not imply every pitch of 24-TET is used. Suggested listening window: 6 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 6,
-        "sourceUrl": "https://kinggizzardandthelizardwizard.com/release/flying-microtonal-banana",
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Learn the repeated riff’s between-key positions. Additional frets do not imply every pitch of 24-TET is used.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Q-i1XZc8ZwA",
+        "youtubeId": "Q-i1XZc8ZwA",
+        "endSeconds": 360,
+        "startSeconds": 0,
+        "duration": 360,
+        "videoSeconds": 469
       },
       {
         "type": "music",
-        "title": "Beauty in the Beast",
-        "artist": "Wendy Carlos",
-        "album": "Beauty in the Beast",
-        "context": "The title track uses Alpha and Beta; compare its interval vocabulary with quarter-tone rock. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": "https://www.wendycarlos.com/+bitb.html",
-        "youtubeId": null,
-        "endSeconds": null
+        "title": "Gleam",
+        "artist": "Sevish",
+        "album": "Harmony Hacker",
+        "context": "Follow the repeated electronic phrases in Sevish’s 22-tone equal temperament.",
+        "sourceUrl": "https://www.youtube.com/watch?v=l9wINwlgxRU",
+        "youtubeId": "l9wINwlgxRU",
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 267
       },
       {
         "type": "narration",
-        "title": "5C · An instrument built around speech",
-        "text": "If your desired pitches do not fit an existing instrument, you can change the instrument. Harry Partch pursued that possibility through a body of custom instruments and a just-intonation system often summarized as forty-three tones per octave. Those forty-three positions are unequal: this is not forty-three-tone equal temperament.\n\nThe number alone can distract from the musical purpose. A scale is a set of resources, not an instruction to use every pitch in every phrase. Partch's instruments turn relationships into physical places a performer can reach. Different materials and playing actions also give those pitches distinctive colors. Instrument design joins tuning design.\n\nBarstow draws on inscriptions left by hitchhikers. Listen to how words become melodic shapes while retaining the timing and inflection of speech. Everyday speech moves in pitch without dividing itself into piano semitones. A composition can stylize that motion and preserve its character. The result may sound unfamiliar as a conventional song while making sense as heightened speaking.\n\nThe work exists in multiple versions with different instrumental forces. Choose a documented recording and begin with a short opening excerpt; do not compare two versions as if the tuning were their only difference. Partch's own involvement in a recording helps establish which version and performance practice you are hearing.\n\nWhat to listen for: take two or three minutes. Follow the shape of one spoken phrase into its sung contour, then listen to an instrumental response. Ask how the unfamiliar pitch helps carry the word's emphasis. Return to the phrase once its meaning is familiar.",
+        "title": "5C · Following speech into melody",
+        "text": "We've heard a piano retuned for a particular piece, extra pitch positions on guitars, and an electronic track using twenty-two equal steps per octave. Harry Partch also designed instruments around the pitches he wanted to use.\n\nOur excerpt is from Barstow, which takes its words from inscriptions left by hitchhikers. The phrasing of those words will give you something familiar to follow among the unfamiliar instrumental sounds.\n\nPartch built custom instruments and developed a just-intonation system often described as forty-three tones per octave. Those tones are unequally spaced. Each position belongs to a network of frequency ratios, rather than a division of the octave into forty-three identical steps.\n\nBuilding instruments made those pitches available to performers. It also meant choosing the materials and playing actions that would give them their sound. Tuning and instrumental color were therefore closely connected. A pitch could be unfamiliar both in its relationship to the melody and in the way it was produced.\n\nSpeech gives you another way to follow the music. In ordinary conversation, our voices rise and fall without moving through a fixed sequence of piano notes. We recognize emphasis, hesitation, and the end of a thought through those changes. In Barstow, you can listen for how the composed line carries the inflection of its words.\n\nWe'll hear the opening three minutes of the Neuma Records recording of Barstow. Choose a phrase whose words you can follow, then listen to the rise and fall of the voice and the instrumental response. If the tuning is unfamiliar, the rhythm and emphasis of the words can help you stay with the passage.",
         "sources": [
           {
             "title": "Partch archive: versions and recordings",
@@ -494,15 +571,22 @@ const PITCH_SESSIONS = [
         "type": "music",
         "title": "Barstow (opening excerpt)",
         "artist": "Harry Partch",
-        "album": "Choose a documented version · The World of Harry Partch is one option",
-        "context": "Hear speech-shaped melody and custom timbre. Keep the first encounter to three minutes. Suggested listening window: 3 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 3,
-        "sourceUrl": "https://www.corporeal.com/7barstow.html",
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Neuma Records · Barstow",
+        "context": "Hear speech-shaped melody and custom timbre. Keep the first encounter to three minutes.",
+        "sourceUrl": "https://www.youtube.com/watch?v=EZ7tlCxXAfo",
+        "youtubeId": "EZ7tlCxXAfo",
+        "endSeconds": 180,
+        "startSeconds": 0,
+        "duration": 180,
+        "videoSeconds": 560
+      },
+      {
+        "type": "narration",
+        "title": "Session closing",
+        "text": "We heard several approaches to choosing pitches: Harrison's retuned piano, the additional positions in King Gizzard's guitar riffs, Sevish's twenty-two-step octave, and Partch's instruments and unequal intervals.\n\nIn the final session, we'll return to the harmonics that began the course. We'll hear how composers and producers use frequency relationships to shape the combined sound of an ensemble, a synthesizer, or a group of voices."
       }
     ],
-    "extra": "Optional whole album: King Gizzard & the Lizard Wizard, Flying Microtonal Banana. Allow about 40 minutes; edition timings vary."
+    "extra": ""
   },
   {
     "title": "Overtones as material",
@@ -512,8 +596,8 @@ const PITCH_SESSIONS = [
     "segments": [
       {
         "type": "narration",
-        "title": "6A · A note becomes an ensemble",
-        "text": "In Session 1, several frequencies fused into a single voice. Imagine reversing the process: assign components of a harmonic spectrum to different instruments and let the ensemble behave like one changing sound. The boundary between timbre and harmony starts to blur. A chord becomes the inside of a note, spread across musicians.\n\nSpectral approaches to composition attend to frequency relationships, the behavior of sound over time, and perception. A spectrum is more than a list of pitches: partials have different strengths, attacks, and decay patterns. Orchestration can model those differences and then transform them. The ensemble need not reproduce a natural sound faithfully to make the connection audible.\n\nThe opening of Grisey's Partiels gives you a low reference and a recurring, spectrum-like bloom around it. Listen for how the higher instrumental components fuse with or separate from the bass. That perceptual movement is the lesson: several played notes can behave like one timbre, then become an unstable chord.\n\nA familiar account says Grisey measured a trombone spectrum and directly orchestrated it for this opening. IRCAM's archival research challenges that story, reporting that no trombone sound served as the model for Partiels. We can hear and discuss the harmonic-spectrum construction without treating that attractive origin story as established fact.\n\nWhat to listen for: hear the first few minutes twice. First treat the ensemble as one large instrument. Then listen for separate components inside it. Recall Hefele's upper whistle emerging from the voice: the direction of attention is similar even though the musical method is different.",
+        "title": "6A · Hearing an ensemble as one sound",
+        "text": "Across the course, we've moved from the components of a single note to the ways musicians tune and combine notes. In this final session, we'll bring those ideas together by listening to sounds whose separate components can blend into one.\n\nWe'll hear an ensemble arranged around frequency relationships, synthesizers whose nearby pitches interact, and voices combined into chords. You can use the same shift of attention in each: hear the whole sound, then try following something within it.\n\nOur first example is the opening of Gérard Grisey's Partiels. A low sound is followed by higher instrumental tones. Listen for moments when those instruments seem to belong to one combined sound, and moments when a part becomes distinct.\n\nSpectral approaches to composition work with these frequency relationships and with the way sounds develop over time. A spectrum describes more than the pitches present at one moment. The strength and behavior of each component also matter. A composer can use those features as a starting point, then change them over the course of a piece.\n\nWe'll hear the first five minutes of Partiels. At first, listen to the instruments together as a single sound. As the gestures recur, try following one of the higher parts separately. This is similar to shifting attention toward the upper whistle in Hefele's voice, though the ensemble produces its sound in a different way.",
         "sources": [
           {
             "title": "IRCAM: work and instrumentation",
@@ -529,17 +613,19 @@ const PITCH_SESSIONS = [
         "type": "music",
         "title": "Partiels (opening)",
         "artist": "Gérard Grisey",
-        "album": "For eighteen musicians · choose a documented ensemble recording",
-        "context": "Hear the low reference and the spectrum-like instrumental bloom. Avoid the disputed measured-trombone origin story. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
-        "sourceUrl": "https://medias.ircam.fr/fr/work/partiels",
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Asko Ensemble · Partiels (1975)",
+        "context": "Hear the low reference and the spectrum-like instrumental bloom. Avoid the disputed measured-trombone origin story.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Mmw8M_e2x_8",
+        "youtubeId": "Mmw8M_e2x_8",
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 1322
       },
       {
         "type": "narration",
-        "title": "6B · A little instability becomes a texture",
-        "text": "Two nearly identical oscillator frequencies produce a slowly changing relationship. Their peaks sometimes reinforce each other and sometimes partially cancel. Add several oscillators with small offsets and the result has a moving interior: one played note can feel wide, animated, or shimmering. This is the beating from Session 2 used as a sound-design resource.\n\nRoland's JP-8000 Super Saw combines seven detuned sawtooth waves. Because each saw has many harmonics, the interaction happens across a rich spectrum. The effect is not merely seven sine waves beating at one rate. More detune changes the texture, and envelope, filter, effects, and stereo placement change the perceived width too.\n\nSystem F's “Out of the Blue” provides a trance listening example for a broad, animated lead. Treat “supersaw-like” as a description of what to listen for here, not a verified claim about the precise hardware or patch in the master recording. The manufacturer documents the synthesis principle; the recording gives you a musical setting in which to hear that family of textures.\n\nBoards of Canada's “Roygbiv” gives a softer comparison. Listen for the sense of unstable pitch and aged texture. Tape-speed variation can change pitch over time, but a recording's wobble can also come from deliberate synthesis or modulation. Your ears can describe the movement without proving the entire production chain.\n\nWhat to listen for: follow one sustained or repeating synth voice and listen inside it. Compare the gentle instability in Boards of Canada with the broad lead in System F. Decide whether you hear a moving center pitch, internal beating, or both.",
+        "title": "6B · Detuning a synthesizer sound",
+        "text": "In Partiels, we listened to several instruments combining into a changing sound. A synthesizer can create a related effect with several oscillators, the components that generate its repeating waves.\n\nWhen those oscillators are tuned slightly apart, their waves reinforce and partly cancel one another over time. A held note can have audible movement within it. This returns us to the beating we discussed in Session 2.\n\nRoland's JP-8000 Super Saw combines seven detuned sawtooth waves. Each wave contains a series of harmonics, so changing the detuning changes relationships across the spectrum. Filtering, the way the note begins and ends, effects, and stereo placement also influence the result.\n\nBoards of Canada's “Roygbiv” offers a quieter comparison. Follow the pitch movement within a repeating part. Changes in tape speed can produce pitch wobble, and synthesis or modulation can create similar movement. Listening lets you describe the effect even when the production method hasn't been established.\n\nSystem F's “Out of the Blue” gives us a broad trance lead to listen to in that context. We're using it as an example of that family of sounds; the recording alone doesn't establish the exact synthesizer or patch used.\n\nBoards of Canada's “Roygbiv” comes first, followed by System F's “Out of the Blue.” In “Roygbiv,” follow the small pitch movements within a repeating synth part. In System F, listen to the motion inside the broader lead sound. Try to hear whether the central pitch is drifting or whether nearby components seem to be moving against each other.",
         "sources": [
           {
             "title": "Roland: seven detuned saws",
@@ -552,27 +638,31 @@ const PITCH_SESSIONS = [
         "title": "Roygbiv",
         "artist": "Boards of Canada",
         "album": "Music Has the Right to Children",
-        "context": "Listen for small pitch fluctuations and worn texture; the exact tape or modulation process is not established here. Suggested listening window: 3 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 3,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "context": "Listen for small pitch fluctuations and worn texture; the exact tape or modulation process is not established here.",
+        "sourceUrl": "https://www.youtube.com/watch?v=SM4tQcUt_mQ",
+        "youtubeId": "SM4tQcUt_mQ",
+        "endSeconds": 149,
+        "startSeconds": 0,
+        "duration": 149,
+        "videoSeconds": 149
       },
       {
         "type": "music",
         "title": "Out of the Blue",
         "artist": "System F · Ferry Corsten",
-        "album": "Choose the original mix or official video",
-        "context": "Hear the animated, broad trance lead. “Supersaw-like” describes a sound, not a confirmed patch. Suggested listening window: 4 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 4,
-        "sourceUrl": null,
-        "youtubeId": null,
-        "endSeconds": null
+        "album": "Official video · Ferry Corsten",
+        "context": "Hear the animated, broad trance lead. “Supersaw-like” describes a sound, not a confirmed patch.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Qgx_V0So0qk",
+        "youtubeId": "Qgx_V0So0qk",
+        "endSeconds": 240,
+        "startSeconds": 0,
+        "duration": 240,
+        "videoSeconds": 249
       },
       {
         "type": "narration",
-        "title": "6C · One voice, a chord around it",
-        "text": "A harmony processor can derive additional pitches from one incoming voice. Pitch shifting changes the frequency structure of copies, while a keyboard or other control can specify the desired chord. The copies can share the original rhythm and articulation so closely that the chord sounds like one impossible throat. This returns us to the course's first question: how many pitches can live inside one apparent voice?\n\nA vocoder works differently. It analyzes spectral features of a modulator, often speech, and imposes them on a carrier, often a synthesizer. The carrier supplies its own pitches while the voice supplies an articulation pattern. A harmonizer shifts or generates related vocal pitches; a vocoder transfers spectral shape. Their musical effects can overlap, so a robotic sound alone does not identify the processor.\n\nImogen Heap's “Hide and Seek” makes the fused vocal chord the foreground. Listen for consonants opening and closing several pitches together and for the relationship between the prominent line and the surrounding stack. The useful task is hearing shared articulation, not counting imaginary backup singers.\n\nJacob Collier's “Hideaway” adds a comparison with a densely arranged, layered vocal world. The official recording confirms his authorship and performance, but this lesson does not assert a particular harmonizer or exact microtonal offset in that track. Independent vocal layers can create a different sense of space from electronically derived copies of one input.\n\nWhat to listen for: compare the synchronization of consonants, the stability of held chords, and the way individual lines emerge. End by comparing the vocal chord with Session 1's overtone singing. Existing harmonics, added voices, and pitch-shifted copies are different routes to a similar perceptual puzzle.",
+        "title": "6C · How voices become a chord",
+        "text": "Our final pair of recordings returns to the human voice. We began the course with a singer bringing out harmonics within her own voice. Now we'll hear several vocal pitches forming chords, and listen to how closely their words and rhythms move together.\n\nFirst comes Imogen Heap's “Hide and Seek,” followed by Jacob Collier's “Hideaway.” In Heap's recording, pay attention to the consonants. Their shared timing helps the chord sound unified, even while a melody remains audible within it.\n\nA harmony processor can take an incoming voice and derive additional pitches from it. Pitch-shifted copies retain much of the original voice's timing and articulation. A keyboard or another control can determine the harmony. Because the parts begin with the same performance, they can move together very closely.\n\nA vocoder uses a different method. It analyzes the changing spectrum of a voice, then applies that pattern to another sound, often a synthesizer. The synthesizer supplies the pitches; the voice shapes their articulation. These processes can produce related effects, so the sound of a recording doesn't always tell you which device was used.\n\nJacob Collier's “Hideaway” gives us a fuller, layered vocal arrangement for comparison. Listen for moments when the parts share their timing and moments when a line becomes independent. The recording gives us a listening comparison; its exact tuning and processing remain unverified.\n\nCompare these recordings with Hefele's overtone singing. In her demonstration, the upper melody follows harmonics of the lower voice. Added vocal parts can move independently, while processed copies may share every syllable's timing.\n\n“Hide and Seek” will play first, followed by an excerpt from “Hideaway.” Listen to the consonants that begin or end a word, then to the vowels held across a chord. Notice when the parts seem to move as one voice and when you can follow a line separately.",
         "sources": [
           {
             "title": "Heap: official recording",
@@ -589,22 +679,31 @@ const PITCH_SESSIONS = [
         "title": "Hide and Seek",
         "artist": "Imogen Heap",
         "album": "Speak for Yourself",
-        "context": "Listen for one articulation shared across a chord of vocal pitches. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
+        "context": "Listen for one articulation shared across a chord of vocal pitches.",
         "sourceUrl": "https://www.youtube.com/watch?v=UYIAfiVGluk",
         "youtubeId": "UYIAfiVGluk",
-        "endSeconds": 300
+        "endSeconds": 266,
+        "startSeconds": 0,
+        "duration": 266,
+        "videoSeconds": 266
       },
       {
         "type": "music",
         "title": "Hideaway",
         "artist": "Jacob Collier",
         "album": "In My Room",
-        "context": "Compare the layered arrangement with Heap’s fused vocal chords. Exact tuning offsets and processor use are not asserted. Suggested listening window: 5 minutes; this is an excerpt budget, not the release duration.",
-        "listenMinutes": 5,
+        "context": "Compare the layered arrangement with Heap’s fused vocal chords. Exact tuning offsets and processor use are not asserted.",
         "sourceUrl": "https://www.youtube.com/watch?v=4v3zyPEy-Po",
         "youtubeId": "4v3zyPEy-Po",
-        "endSeconds": 300
+        "endSeconds": 300,
+        "startSeconds": 0,
+        "duration": 300,
+        "videoSeconds": 426
+      },
+      {
+        "type": "narration",
+        "title": "Course closing",
+        "text": "We began by separating the low voice and upper whistle in overtone singing. Since then, we've listened to notes against drones, heard different ways of tuning chords, followed pitches between keyboard notes, and encountered pieces with different pitch systems.\n\nYou don't need to identify a tuning or a production technique every time you hear music. You can begin with a smaller observation: a held note is pulsing, a voice slides toward a pitch, or several instruments seem to combine into one sound. The course gives you some ways to investigate those observations.\n\nThe next time a sound catches your attention, stay with it for a phrase. Follow its pitch, then its changing color, and notice which part you were responding to."
       }
     ],
     "extra": ""

@@ -76,6 +76,10 @@
         $('#course-tagline').textContent = course.tagline;
         $('#course-intro').textContent = course.intro;
         document.title = course.title + ' · Music Learn';
+        document.querySelectorAll('[data-course-lab]').forEach(card => {
+            card.hidden = !course.labs.includes(card.dataset.courseLab);
+        });
+        $('#tools-section').hidden = course.labs.length === 0;
         renderSessionGrid();
     }
 
@@ -145,6 +149,7 @@
         currentSegIdx = -1;
         isPlaying = false;
 
+        skippedTracks = [];
         const session = activeCourse().sessions[idx];
         sessionLabel.textContent = `${activeCourse().title} · Session ${idx + 1}: ${session.title} · ${formatMinutes(statsFor(idx).seconds)}`;
         currentSegments = CourseUtils.segments(session);
@@ -212,9 +217,10 @@
         if (currentSegIdx + 1 < currentSegments.length) {
             goToSegment(currentSegIdx + 1);
         } else {
+            stopAll();
             isPlaying = false;
             updatePlayIcon();
-            segmentName.textContent = 'Session complete';
+            segmentName.textContent = skippedTracks.length ? `Session complete · ${skippedTracks.length} unavailable recording(s) skipped` : 'Session complete';
         }
     }
 
@@ -249,7 +255,7 @@
             if (seg.type === 'narration') {
                 resumeOrStartNarration(seg);
             } else {
-                if (loadedVideoId === musicVideoId(seg)) resumeYouTube();
+                if (loadedVideoId && musicVideoIds(seg).includes(loadedVideoId) && !musicFailed) resumeYouTube();
                 else playMusicTrack(seg);
             }
         }
@@ -568,10 +574,7 @@
         trackArtist.textContent = seg.artist || '';
         trackAlbum.textContent = seg.album || '';
         trackContext.textContent = seg.context || '';
-        if (!musicVideoId(seg)) showFallback(seg);
-        else if (playerWrapper.querySelector('.spotify-fallback')) {
-            playerWrapper.innerHTML = '<div id="youtube-player"></div>';
-        }
+        $('#playback-status').textContent = '';
     }
 
     function updateTransport() {
@@ -580,9 +583,12 @@
             segTypeIcon.className = seg.type;
             segmentName.textContent = seg.title;
             segCounter.textContent = `${currentSegIdx + 1} / ${currentSegments.length}`;
+            const next = currentSegments[currentSegIdx + 1];
+            $('#up-next').textContent = next ? `Up next: ${next.artist ? next.artist + ' — ' : ''}${next.title}` : '';
         } else {
             segTypeIcon.className = '';
             segmentName.textContent = 'Ready';
+            $('#up-next').textContent = 'Narration and music play in sequence';
             segCounter.textContent = `0 / ${currentSegments.length}`;
         }
     }
@@ -761,6 +767,17 @@
     let ytAPILoaded = false;
     let pendingVideo = null;
     let loadedVideoId = null;
+    let musicTimer = null;
+    let musicGeneration = 0;
+    let musicStarted = false;
+    let musicFailed = false;
+    let attemptedVideos = new Set();
+    let skippedTracks = [];
+
+    function clearMusicTimer() {
+        if (musicTimer !== null) clearTimeout(musicTimer);
+        musicTimer = null;
+    }
 
     function ensureYouTubeAPI() {
         if (ytAPILoaded) return;
@@ -771,114 +788,154 @@
         }
         const tag = document.createElement('script');
         tag.src = 'https://www.youtube.com/iframe_api';
+        tag.onerror = () => failMusic('YouTube could not load');
         document.head.appendChild(tag);
+    }
+
+    function currentMusicEvent() {
+        const seg = currentSegments[currentSegIdx];
+        const actualId = ytPlayer?.getVideoData?.().video_id;
+        return isPlaying && seg?.type === 'music' && loadedVideoId && !musicFailed
+            && (!actualId || actualId === loadedVideoId);
     }
 
     window.onYouTubeIframeAPIReady = function () {
         ytPlayer = new YT.Player('youtube-player', {
-            height: '100%',
-            width: '100%',
-            playerVars: {
-                autoplay: 0,
-                controls: 1,
-                modestbranding: 1,
-                rel: 0,
-                fs: 1,
-            },
+            height: '100%', width: '100%',
+            playerVars: { autoplay: 0, controls: 1, rel: 0, fs: 1, playsinline: 1, origin: window.location?.origin },
             events: {
                 onReady: () => {
                     ytReady = true;
                     if (pendingVideo && isPlaying) {
-                        loadAndPlayYT(pendingVideo.id, pendingVideo.start, pendingVideo.end);
+                        const video = pendingVideo;
                         pendingVideo = null;
+                        loadAndPlayYT(video.id, video.start, video.end);
                     }
                 },
-                onError: () => {
-                    const seg = currentSegments[currentSegIdx];
-                    if (seg?.type === 'music') showFallback(seg);
+                onError: () => { if (currentMusicEvent()) failMusic('Recording unavailable'); },
+                onAutoplayBlocked: () => {
+                    if (!currentMusicEvent()) return;
+                    pause();
+                    $('#playback-status').textContent = 'Your browser blocked automatic audio. Press Play to continue this session.';
                 },
-                onStateChange: (e) => {
-                    if (e.data === YT.PlayerState.ENDED && isPlaying) {
+                onStateChange: e => {
+                    if (!currentMusicEvent()) return;
+                    if (e.data === YT.PlayerState.PLAYING) {
+                        musicStarted = true;
+                        $('#playback-status').textContent = '';
+                        watchExcerpt();
+                    } else if (e.data === YT.PlayerState.ENDED && musicStarted) {
                         advanceSegment();
+                    } else if (e.data === YT.PlayerState.BUFFERING) {
+                        armMusicTimeout();
+                    } else if (e.data === YT.PlayerState.PAUSED && musicStarted) {
+                        // Keep the transport consistent when someone pauses inside the embed.
+                        isPlaying = false;
+                        clearMusicTimer();
+                        updatePlayIcon();
                     }
-                },
-            },
+                }
+            }
         });
     };
 
     function musicVideoId(seg) {
-        return activeCourse().youtubeIds[seg.title] || seg.youtubeId;
+        return seg.youtubeId || activeCourse().youtubeIds[seg.title];
+    }
+
+    function musicVideoIds(seg) {
+        return [musicVideoId(seg), ...(seg.backupYoutubeIds || [])].filter(Boolean);
+    }
+
+    function armMusicTimeout() {
+        clearMusicTimer();
+        const generation = musicGeneration;
+        musicTimer = setTimeout(() => {
+            if (generation === musicGeneration && isPlaying) failMusic('Recording did not load');
+        }, 45000);
+    }
+
+    function watchExcerpt() {
+        clearMusicTimer();
+        const generation = musicGeneration;
+        const seg = currentSegments[currentSegIdx];
+        const end = CourseUtils.musicEnd(seg);
+        musicTimer = setTimeout(() => {
+            if (generation !== musicGeneration || !currentMusicEvent()) return;
+            if (end != null && ytPlayer.getCurrentTime() >= end - 0.1) advanceSegment();
+            else watchExcerpt();
+        }, 250);
     }
 
     function playMusicTrack(seg) {
-
-        const ytId = musicVideoId(seg);
-        if (!ytId) {
-            showFallback(seg);
-            return;
-        }
-
+        musicFailed = false;
+        const id = musicVideoIds(seg).find(candidate => !attemptedVideos.has(candidate));
+        if (!id) { failMusic('No playable recording'); return; }
+        attemptedVideos.add(id);
+        loadedVideoId = id;
+        pendingVideo = { id, start: seg.startSeconds || 0, end: CourseUtils.musicEnd(seg) };
+        armMusicTimeout();
         ensureYouTubeAPI();
-        if (!ytReady) {
-            pendingVideo = { id: ytId, start: seg.startSeconds || 0, end: seg.endSeconds };
-            return;
+        if (ytReady) {
+            const video = pendingVideo;
+            pendingVideo = null;
+            if (video) loadAndPlayYT(video.id, video.start, video.end);
         }
-
-        loadAndPlayYT(ytId, seg.startSeconds || 0, seg.endSeconds);
     }
 
     function loadAndPlayYT(videoId, startSeconds, endSeconds) {
         if (!ytPlayer || !ytReady) return;
-        const opts = { videoId, startSeconds: startSeconds || 0 };
-        if (endSeconds) opts.endSeconds = endSeconds;
         loadedVideoId = videoId;
+        musicStarted = false;
+        const opts = { videoId, startSeconds: startSeconds || 0 };
+        if (endSeconds != null) opts.endSeconds = endSeconds;
+        armMusicTimeout();
         ytPlayer.loadVideoById(opts);
     }
 
-    function pauseYouTube() {
-        if (ytPlayer && ytReady && typeof ytPlayer.pauseVideo === 'function') {
-            ytPlayer.pauseVideo();
+    function failMusic(reason) {
+        const seg = currentSegments[currentSegIdx];
+        if (!isPlaying || seg?.type !== 'music' || musicFailed) return;
+        clearMusicTimer();
+        if (musicVideoIds(seg).some(id => !attemptedVideos.has(id))) {
+            $('#playback-status').textContent = 'Trying another recording…';
+            playMusicTrack(seg);
+            return;
         }
+        musicFailed = true;
+        if (!skippedTracks.includes(seg.title)) skippedTracks.push(seg.title);
+        $('#playback-status').textContent = `${reason}: ${seg.title}. Continuing to the next segment.`;
+        const generation = musicGeneration;
+        musicTimer = setTimeout(() => {
+            if (generation === musicGeneration && isPlaying) advanceSegment();
+        }, 2000);
+    }
+
+    function pauseYouTube() {
+        clearMusicTimer();
+        if (ytPlayer && ytReady) ytPlayer.pauseVideo();
     }
 
     function resumeYouTube() {
-        if (ytPlayer && ytReady && typeof ytPlayer.playVideo === 'function') {
+        if (ytPlayer && ytReady) {
+            armMusicTimeout();
             ytPlayer.playVideo();
+        } else {
+            attemptedVideos.clear();
+            playMusicTrack(currentSegments[currentSegIdx]);
         }
     }
 
     function stopYouTube() {
+        musicGeneration++;
+        clearMusicTimer();
         pendingVideo = null;
         loadedVideoId = null;
-        if (ytPlayer && ytReady && typeof ytPlayer.stopVideo === 'function') {
-            ytPlayer.stopVideo();
-        }
+        musicStarted = false;
+        musicFailed = false;
+        attemptedVideos.clear();
+        if (ytPlayer && ytReady) ytPlayer.stopVideo();
     }
-
-    function showFallback(seg) {
-        const searchQ = encodeURIComponent(`${seg.title} ${seg.artist || ''}`);
-        const wrapper = $('#player-wrapper');
-        if (ytPlayer?.destroy) ytPlayer.destroy();
-        pendingVideo = null;
-        wrapper.innerHTML = `
-            <div class="spotify-fallback">
-                <p style="color:var(--text-secondary);">This track needs to be played manually.</p>
-                ${seg.sourceUrl ? `<a href="${seg.sourceUrl}" target="_blank" rel="noopener noreferrer">Open recording / reference</a>` : ''}
-                <a href="https://www.youtube.com/results?search_query=${searchQ}" target="_blank" rel="noopener noreferrer">Search on YouTube</a>
-                <button class="skip-btn" onclick="window.__skipSegment()">Skip to next &rarr;</button>
-            </div>
-            <div id="youtube-player"></div>
-        `;
-        // Recreate the YT player div for next use
-        ytPlayer = null;
-        ytReady = false;
-        ytAPILoaded = false;
-    }
-
-    window.__skipSegment = function () {
-        if (isPlaying) advanceSegment();
-        else nextSegment();
-    };
 
     // --- Voice modal ---
     function loadVoices() {

@@ -10,7 +10,7 @@ const ROOT = __dirname;
 const METADATA_FILE = path.join(ROOT, 'audio-durations.js');
 
 function loadCourses() {
-    const sources = ['sessions.js', 'pitch-sessions.js', 'house-sessions.js', 'courses.js'];
+    const sources = ['sessions.js', 'pitch-sessions.js', 'house-sessions.js', 'playback-catalog.js', 'courses.js'];
     return new Function(sources.map(file => fs.readFileSync(path.join(ROOT, file), 'utf8')).join('\n') + '\nreturn COURSES;')();
 }
 
@@ -44,7 +44,15 @@ function synthesize(text, apiKey) {
             response.on('error', reject);
             response.on('end', () => {
                 if (response.statusCode !== 200) {
-                    const error = new Error(`ElevenLabs returned HTTP ${response.statusCode}`);
+                    let detail = '';
+                    try {
+                        const parsed = JSON.parse(Buffer.concat(chunks).toString('utf8')).detail;
+                        if (parsed && typeof parsed === 'object') {
+                            detail = [parsed.status || parsed.code, parsed.message].filter(Boolean).join(': ');
+                        }
+                    } catch (_) { /* The HTTP status remains useful for non-JSON errors. */ }
+                    detail = detail.split(apiKey).join('[redacted]');
+                    const error = new Error(`ElevenLabs returned HTTP ${response.statusCode}${detail ? ': ' + detail : ''}`);
                     error.statusCode = response.statusCode;
                     reject(error);
                 } else resolve(Buffer.concat(chunks));

@@ -87,3 +87,37 @@ memory. Concretely:
 - [ ] Each metaphor used once, then grounded (rule 10)
 - [ ] Every fact, date, name, label, and track reference cross-checked against sources; contested claims hedged (Accuracy)
 - [ ] Every segment teaches distinct, concrete, mechanical content (the standing project note)
+
+## Pitch course voice
+
+For `pitch-sessions.js` and `pitch-curriculum.md`, the user's October 2026 direction
+is conversational, story-led public-radio narration. Begin with an audible detail,
+a performer's action, or a practical experiment, then explain it. Use natural
+spoken sentences and specific listening cues. Do not invent scenes, dialogue, or
+reporting to create a story. Preserve technical qualifications and source links.
+This course-specific direction takes precedence over the house course's
+“measured historian” register above; the house script keeps its existing voice.
+
+Treat the user's broader prose guidance as editorial judgment, not a mechanical
+word filter. Cut empty intensifiers, throat-clearing, binary reveals, faux-insight
+setups, dramatic fragments, interpretive asides, and clever closing lines. Avoid
+stock promotional verbs and metaphors, repeated sentence patterns, decorative em
+dashes, and unnecessary recaps. Prefer concrete explanations and ordinary verbs.
+Keep useful direct address, factual distinctions, and technical terms such as
+“just intonation.” End each read with a specific listening action.
+
+
+### Pitch course guidance and recording approval
+
+Establish what the course and each session will teach before introducing its
+first recording. Connect each new block to the preceding listening, introduce
+technical terms before relying on them, and identify upcoming recordings in
+playback order. Listening cues must work during a single hands-free pass; labs
+and replays are optional. Do not assume that the listener has already heard an
+upcoming example or completed an optional experiment.
+
+The user explicitly requires copy review before rerecording because generation
+costs money. Keep proposed changes in `pitch-review.json` and `pitch-review.html`
+until approved. Do not call ElevenLabs for revisions before the user approves
+the revised copy. The existing live script and recordings should stay matched
+while a new draft is being reviewed.

@@ -8,7 +8,7 @@ One static app for three guided listening courses, using the newer House as Cont
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8765 and choose Rhythm as Architecture (five sessions), House as Continuation (six), or The Inside of a Note (six). The browser remembers the selected course.
+Open http://localhost:8765 and choose Rhythm as Architecture (five sessions), House as Continuation (six), or The Inside of a Note (six). The browser remembers the selected course.
 
 Every course plays in authored order, with narration and music interleaved. Each new narration page has a two-second silent lead-in. Existing MP3s play first; missing recordings fall back to browser speech. Pause, resume, skipping, and returning to the course list cancel pending narration starts.
 
@@ -16,13 +16,15 @@ Every course plays in authored order, with narration and music interleaved. Each
 
 - `sessions.js`: original rhythm course, using its existing `audio/sN_XX.mp3` files. Seven MP3s are currently available.
 - `house-sessions.js`: imported house course. All 39 existing MP3s were copied to `audio/house/`; the separate `musiclearn-house` folder was not modified.
-- `pitch-sessions.js` and `pitch-curriculum.md`: pitch/tuning course, with 18 main reads and two optional album notes. Its reserved audio location is `audio/pitch/`; no ElevenLabs recordings have been generated yet.
+- `pitch-sessions.js` and `pitch-curriculum.md`: pitch/tuning course, with a course welcome, 18 main reads, and six session closings. Its 25 approved narration clips target `audio/pitch-v2/`, with the same Eric voice and settings as House. Nine clips (Sessions 1–2) are recorded; the remaining 16 use browser narration until the ElevenLabs key quota is raised and rendering resumes.
 - `courses.js`: course titles, data, video lookups, and audio directories.
 - `course-utils.js`: shared authored-order indexing, filenames, and duration calculations used by both the player and generator.
 - `audio-durations.js`: measured MP3 durations. Session estimates prefer these values, then the segment's `audioSeconds`, then a 150-word-per-minute estimate. Totals include two seconds per narration page and track durations or specified excerpt windows.
 - `STYLE.md`: the house course's narration style and pre-render accuracy requirements, retained as the editorial baseline for future revisions. Consolidation does not mean every older script has been re-audited against it.
 
-Pitch listening windows remain excerpt budgets, not verified release durations. Some tracks open via manual links. The house course retains its existing video IDs; merging has not reverified regional availability or embedding. Use the timeline or Next button to read without starting narration.
+Every required listening segment has a YouTube recording and a fixed excerpt window. Press Play once to hear narration and music in sequence. `playback-catalog.js` is the authoritative source for recording IDs and excerpt boundaries across all three courses; it overrides legacy IDs and offsets in the original scripts. `playback-audit.json` records the latest checks. If a recording fails, the player tries a configured backup, then reports the failure and continues automatically. The app redirects numeric loopback addresses to `localhost`, where the checked music embeds play successfully. Browser autoplay restrictions can still require a Play gesture; keep the page open while listening.
+
+All 97 selections reached playback in the localhost embed check on October 7, 2026. This checks a short sample of each recording, not uninterrupted playback of every full session. Open `tests/playback-check.html` on the local server to repeat the muted embed check. Use the timeline or Next button to read without starting narration.
 
 ## ElevenLabs workflow
 
@@ -49,7 +51,7 @@ Measure existing audio without rendering:
 node generate-audio.js --course house --measure
 ```
 
-Successful renders update `audio-durations.js`. Reload the app to pick up new recordings and timings. The two optional pitch album notes use narration index 03 in sessions 2 and 5, matching the player.
+Successful renders update `audio-durations.js`. Reload the app to pick up new recordings and timings. Pitch Session 1 uses indices 00–04 (welcome, three reads, closing); Sessions 2–6 use 00–03 (three reads, closing). Its separate `audio/pitch-v2/` directory prevents old recordings from being played against the reindexed script. `pitch-review.html` and `pitch-review.json` preserve the approved copy. Further revisions require copy approval before generating audio.
 
 ## Listening labs
 

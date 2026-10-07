@@ -1018,3 +1018,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .tl-seg { border: 0; padding: 0; }
 /* The transport shows exactly one state icon. */
 .transport-btn svg.hidden, .viz-play-btn svg.hidden { display: none; }
+
+/* Course-specific labs must stay hidden even when cards use flex layout. */
+#tools-section[hidden], [data-course-lab][hidden] { display: none; }
+
+.up-next { display: block; font-size: 0.75rem; color: var(--text-secondary); margin: 0 0 16px; }

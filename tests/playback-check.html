@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Music Learn playback check</title>
+<style>body{font:16px system-ui;margin:2rem;background:#15151d;color:#eee}button{padding:1rem}pre{white-space:pre-wrap}</style>
+<h1>YouTube embed playback check</h1><p>Plays a muted sample of each course recording to check embedding. Keep this tab open during the check.</p>
+<button id="run" disabled>Check all recordings</button><div id="player"></div><pre id="results" role="status">Loading YouTube…</pre>
+<script src="../playback-catalog.js"></script><script>
+const queue=Object.entries(PLAYBACK_CATALOG).flatMap(([course,tracks])=>Object.entries(tracks).map(([title,s])=>({course,title,...s})));let player,index=-1,timer,settle,done=false,results=[];
+function next(){clearTimeout(timer);clearTimeout(settle);done=false;if(++index>=queue.length){document.querySelector('#results').textContent='COMPLETE\n'+JSON.stringify(results,null,2);return}const t=queue[index];document.querySelector('#results').textContent=`Checking ${index+1}/${queue.length}: ${t.title}\n`+JSON.stringify(results,null,2);timer=setTimeout(()=>finish('TIMEOUT'),25000);player.mute();player.loadVideoById({videoId:t.youtubeId,startSeconds:t.startSeconds});}
+function finish(status){if(done)return;done=true;clearTimeout(timer);clearTimeout(settle);results.push({course:queue[index].course,title:queue[index].title,id:queue[index].youtubeId,status,seconds:player.getDuration()});player.stopVideo();setTimeout(next,400);}
+window.onYouTubeIframeAPIReady=()=>{player=new YT.Player('player',{width:480,height:270,playerVars:{playsinline:1,origin:location.origin},events:{onReady:()=>{document.querySelector('#run').disabled=false;document.querySelector('#results').textContent='Ready';},onStateChange:e=>{if(e.data===1&&!done)settle=setTimeout(()=>finish('PLAYING'),1000);},onError:e=>finish('ERROR '+e.data),onAutoplayBlocked:()=>finish('AUTOPLAY_BLOCKED')}})};
+document.querySelector('#run').onclick=()=>{document.querySelector('#run').disabled=true;next()};
+</script><script src="https://www.youtube.com/iframe_api"></script></html>

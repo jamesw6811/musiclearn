@@ -12,6 +12,11 @@
     function audioPath(course, sessionIndex, narrationIndex) {
         return `${course.audioDir}/s${sessionIndex + 1}_${String(narrationIndex).padStart(2, '0')}.mp3`;
     }
+    function musicEnd(segment) {
+        if (segment.endSeconds != null) return segment.endSeconds;
+        const duration = segment.listenMinutes != null ? segment.listenMinutes * 60 : segment.duration;
+        return duration != null ? (segment.startSeconds || 0) + duration : null;
+    }
     function stats(course, sessionIndex, metadata = {}) {
         let seconds = 0, tracks = 0, narrations = 0, measuredNarrations = 0;
         for (const segment of segments(course.sessions[sessionIndex])) {
@@ -22,14 +27,12 @@
                 seconds += (recorded || segment.text.trim().split(/\s+/).length / 2.5) + leadPauseSeconds;
             } else {
                 tracks++;
-                seconds += segment.listenMinutes != null ? segment.listenMinutes * 60
-                    : segment.endSeconds != null ? segment.endSeconds - (segment.startSeconds || 0)
-                    : segment.duration || 0;
+                seconds += Math.max(0, (musicEnd(segment) || 0) - (segment.startSeconds || 0));
             }
         }
         return { seconds, tracks, narrations, measuredNarrations };
     }
-    const api = { segments, audioPath, stats, leadPauseSeconds };
+    const api = { segments, audioPath, stats, musicEnd, leadPauseSeconds };
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     else root.CourseUtils = api;
 })(typeof globalThis === 'undefined' ? this : globalThis);
