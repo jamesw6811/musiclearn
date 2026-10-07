@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Learn · Guided listening</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- HOME VIEW -->
+        <div id="home-view" class="view active">
+            <div class="home-content">
+                <header class="home-header">
+                    <div class="logo-mark" aria-hidden="true">
+                        <span class="beat b1"></span>
+                        <span class="beat b2"></span>
+                        <span class="beat b3"></span>
+                        <span class="beat b4"></span>
+                        <span class="beat b5"></span>
+                    </div>
+                    <label class="course-label" for="course-select">Choose a course</label>
+                    <select id="course-select" aria-label="Choose a course"><option value="rhythm">Rhythm as Architecture</option><option value="house">House as Continuation</option><option value="pitch" selected>The Inside of a Note</option></select>
+                    <h1 id="course-title">The Inside of a Note</h1>
+                    <p class="tagline" id="course-tagline">Pitch, Tuning &amp; Timbre</p>
+                    <p class="intro" id="course-intro">Six sessions. Read one page, listen, then move to the next block. Explore the sounds yourself in two small listening labs.</p>
+                </header>
+                <div id="session-grid"></div>
+                <div id="tools-section">
+                    <h2 class="tools-heading">Listening labs</h2>
+                    <button class="tool-card pitch-tool" data-lab="harmonics"><span class="lab-symbol" aria-hidden="true">∿</span><span class="tool-card-body"><h2>Build a note</h2><p>Mix harmonics, compare waveforms, and bring an overtone into focus. Pitch sessions 1 &amp; 6.</p></span></button>
+                    <button class="tool-card pitch-tool" data-lab="tuning"><span class="lab-symbol" aria-hidden="true">≈</span><span class="tool-card-body"><h2>Tuning &amp; beating</h2><p>Compare pure intervals with piano tuning, then slow the beats to a stop. Pitch sessions 2, 3 &amp; 5.</p></span></button>
+                    <div class="tool-card" id="open-visualizer">
+                        <div class="tool-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                                <circle cx="16" cy="16" r="14" opacity="0.3"/>
+                                <circle cx="16" cy="16" r="9" opacity="0.5"/>
+                                <circle cx="16" cy="16" r="4" opacity="0.8"/>
+                                <circle cx="16" cy="6" r="2.5" fill="var(--accent)" stroke="none"/>
+                            </svg>
+                        </div>
+                        <div class="tool-card-body">
+                            <h2>Polyrhythm Visualizer</h2>
+                            <p>See and hear how polyrhythms interlock. Orbital animation with synthesized percussion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="home-footer">
+                    <button id="voice-settings-btn" class="settings-btn" aria-label="Voice settings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        Narration Voice
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <div id="pitch-lab-view" class="view">
+            <div class="lab-layout">
+                <nav class="session-nav"><button id="lab-back" class="settings-btn">← Courses</button><span id="lab-title" class="viz-title"></span></nav>
+                <main class="lab-main">
+                    <p id="lab-intro"></p>
+                    <div class="lab-workspace"><div class="lab-visual"><canvas id="lab-canvas" role="img" aria-label="Waveform preview"></canvas><p id="lab-caption"></p></div><div id="lab-controls"></div></div>
+                    <div class="lab-audio"><button id="lab-play" class="btn primary" aria-pressed="false">Play sound</button><label for="lab-volume">Volume <input id="lab-volume" type="range" min="0" max="0.35" value="0.12" step="0.01"></label><span id="lab-status" role="status">Sound starts only when you press play.</span></div>
+                    <p id="lab-experiment" class="narration-highlight"></p>
+                </main>
+            </div>
+        </div>
+
+        <!-- SESSION VIEW -->
+        <div id="session-view" class="view">
+            <div class="session-layout">
+                <nav class="session-nav">
+                    <button id="back-btn" aria-label="Back to all sessions">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        Sessions
+                    </button>
+                    <span id="session-label"></span>
+                </nav>
+
+                <div id="timeline-bar" aria-label="Session timeline">
+                    <div id="timeline-segments"></div>
+                </div>
+
+                <main id="content-area">
+                    <!-- Narration panel -->
+                    <div id="narration-display" class="content-panel">
+                        <div class="panel-badge narration-badge">NARRATION</div>
+                        <h2 id="narration-title"></h2>
+                        <div id="narration-text"></div>
+                    </div>
+
+                    <!-- Music panel -->
+                    <div id="music-display" class="content-panel hidden">
+                        <div class="panel-badge music-badge">PLAYLIST</div>
+                        <div id="track-info">
+                            <h2 id="track-title"></h2>
+                            <p id="track-artist"></p>
+                            <p id="track-album"></p>
+                        </div>
+                        <div id="listening-guide">
+                            <strong>What to listen for:</strong>
+                            <p id="track-context"></p>
+                        </div>
+                        <div id="player-wrapper">
+                            <div id="youtube-player"></div>
+                        </div>
+                    </div>
+
+                    <!-- Idle state -->
+                    <div id="idle-display" class="content-panel hidden">
+                        <p>Press play to begin this session, or use the timeline to jump to any segment.</p>
+                    </div>
+                </main>
+
+                <footer id="transport">
+                    <div class="transport-inner">
+                        <div class="transport-left">
+                            <span id="segment-type-icon"></span>
+                            <span id="segment-name">Ready</span>
+                        </div>
+                        <div class="transport-center">
+                            <button id="prev-seg" class="transport-btn" title="Previous segment" aria-label="Previous">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                            </button>
+                            <button id="play-pause" class="transport-btn play-btn" title="Play session" aria-label="Play">
+                                <svg id="icon-play" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <svg id="icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="hidden"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                            </button>
+                            <button id="next-seg" class="transport-btn" title="Next segment" aria-label="Next">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                            </button>
+                        </div>
+                        <div class="transport-right">
+                            <span id="seg-counter"></span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- VISUALIZER VIEW -->
+        <div id="visualizer-view" class="view">
+            <div class="viz-layout">
+                <nav class="session-nav">
+                    <button id="viz-back-btn" aria-label="Back to home">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        Home
+                    </button>
+                    <span class="viz-title">Polyrhythm Visualizer</span>
+                </nav>
+
+                <div class="viz-main">
+                    <div class="viz-canvas-wrap">
+                        <canvas id="viz-canvas"></canvas>
+                        <div id="viz-cycle-info"></div>
+                    </div>
+
+                    <div class="viz-controls">
+                        <div class="viz-transport">
+                            <button id="viz-play" class="btn primary viz-play-btn" aria-label="Play">
+                                <svg id="viz-icon-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg>
+                                <svg id="viz-icon-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="hidden"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                            </button>
+                            <button id="viz-tap-tempo" class="btn secondary">Tap Tempo</button>
+                        </div>
+
+                        <div class="viz-setting">
+                            <label for="viz-bpm">BPM: <span id="viz-bpm-val">120</span></label>
+                            <input type="range" id="viz-bpm" min="30" max="300" step="1" value="120">
+                        </div>
+
+                        <div class="viz-setting">
+                            <label for="viz-swing">Swing: <span id="viz-swing-val">0%</span></label>
+                            <input type="range" id="viz-swing" min="0" max="75" step="1" value="0">
+                        </div>
+
+                        <div class="viz-setting">
+                            <label for="viz-master-vol">Master Vol: <span id="viz-master-vol-val">80%</span></label>
+                            <input type="range" id="viz-master-vol" min="0" max="100" step="1" value="80">
+                        </div>
+
+                        <div class="viz-setting">
+                            <label for="viz-preset">Preset</label>
+                            <select id="viz-preset">
+                                <option value="custom" selected>Custom</option>
+                                <option value="3:2">3 against 2</option>
+                                <option value="4:3">4 against 3</option>
+                                <option value="5:4">5 against 4</option>
+                                <option value="5:3">5 against 3</option>
+                                <option value="7:4">7 against 4</option>
+                                <option value="7:8">7 against 8</option>
+                                <option value="2:3:4">2 : 3 : 4</option>
+                                <option value="3:4:5">3 : 4 : 5</option>
+                                <option value="3:4:5:7">3 : 4 : 5 : 7</option>
+                            </select>
+                        </div>
+
+                        <div id="viz-layers"></div>
+                        <button id="viz-add-layer" class="btn secondary viz-add-btn">+ Add Layer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Settings Modal -->
+        <div id="voice-modal" class="modal" aria-hidden="true">
+            <div class="modal-backdrop"></div>
+            <div class="modal-body" role="dialog" aria-label="Voice settings">
+                <h3>Narration Voice</h3>
+                <div class="setting-group">
+                    <label for="voice-select">Voice</label>
+                    <select id="voice-select"></select>
+                </div>
+                <div class="setting-group">
+                    <label for="rate-slider">Speed: <span id="rate-value">1.0x</span></label>
+                    <input type="range" id="rate-slider" min="0.6" max="1.6" step="0.1" value="1.0">
+                </div>
+                <div class="modal-actions">
+                    <button id="test-voice" class="btn secondary">Test Voice</button>
+                    <button id="close-modal" class="btn primary">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sessions.js"></script>
+    <script src="pitch-sessions.js"></script>
+    <script src="house-sessions.js"></script>
+    <script src="courses.js"></script>
+    <script src="course-utils.js"></script>
+    <script src="audio-durations.js"></script>
+    <script src="app.js"></script>
+    <script src="pitch-labs.js"></script>
+    <script src="visualizer.js"></script>
+</body>
+</html>
