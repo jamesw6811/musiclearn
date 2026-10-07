@@ -184,7 +184,7 @@ test('browser autoplay denial pauses instead of silently skipping a playable rec
 
 
 test('live Pitch narration matches the approved copy exactly and every session has a closing', () => {
-    const approved=JSON.parse(fs.readFileSync(path.join(root,'pitch-review.json'),'utf8'));
+    const approved=JSON.parse(fs.readFileSync(path.join(root,'reviews/pitch-approved-2026-10-07/pitch-review.json'),'utf8'));
     const pitch=COURSES.find(c=>c.id==='pitch');
     for(const [i,session] of pitch.sessions.entries()) {
         const actual=CourseUtils.segments(session).filter(s=>s.type==='narration').map(s=>s.text);

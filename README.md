@@ -51,7 +51,7 @@ Measure existing audio without rendering:
 node generate-audio.js --course house --measure
 ```
 
-Successful renders update `audio-durations.js`. Reload the app to pick up new recordings and timings. Pitch Session 1 uses indices 00–04 (welcome, three reads, closing); Sessions 2–6 use 00–03 (three reads, closing). Its separate `audio/pitch-v2/` directory prevents old recordings from being played against the reindexed script. `pitch-review.html` and `pitch-review.json` preserve the approved copy. Further revisions require copy approval before generating audio.
+Successful renders update `audio-durations.js`. Reload the app to pick up new recordings and timings. Pitch Session 1 uses indices 00–04 (welcome, three reads, closing); Sessions 2–6 use 00–03 (three reads, closing). Its separate `audio/pitch-v2/` directory prevents old recordings from being played against the reindexed script. `reviews/pitch-approved-2026-10-07/` preserves the approved live copy. `pitch-review.html` and `pitch-review.json` contain a proposed five-session redesign, with one introduction per recording; this draft has not been applied to playback or recorded. Further revisions require copy approval before generating audio.
 
 ## Listening labs
 
